@@ -11,6 +11,7 @@ public class SecondPage extends JPanel implements ActionListener {
     ImageIcon patty;
     Image back;
     JLabel patty_pan, pan;
+	
    
     public SecondPage(){    
   		
@@ -23,19 +24,22 @@ public class SecondPage extends JPanel implements ActionListener {
 
         //생명 1~5개
         JLabel life1  = new JLabel();
-        life1.setIcon(new ImageIcon("패티1.png"));
+        life1.setIcon(new ImageIcon("life.png"));
         JLabel life2  = new JLabel();
-        life2.setIcon(new ImageIcon("apple.jpg"));
+        life2.setIcon(new ImageIcon("life.png"));
         JLabel life3  = new JLabel();
-        life3.setIcon(new ImageIcon("apple.jpg"));
+        life3.setIcon(new ImageIcon("life.png"));
         JLabel life4  = new JLabel();
-        life4.setIcon(new ImageIcon("apple.jpg"));
+        life4.setIcon(new ImageIcon("life.png"));
         JLabel life5  = new JLabel();
-        life5.setIcon(new ImageIcon("apple.jpg"));
+        life5.setIcon(new ImageIcon("life.png"));
+
+		JLabel ordersheet=new JLabel ();
+		ordersheet.setIcon(new ImageIcon("order.png"));
 
         //접시 이미지
         JLabel dish = new JLabel();
-        dish.setIcon(new ImageIcon("쟁반.png"));
+        dish.setIcon(new ImageIcon("dish.png"));
 
         //햄버거 재료 버튼 //안에 이미지 파일 추가하기.
         b_topbun = new JButton(new ImageIcon("topbun.png")); 
@@ -70,8 +74,9 @@ public class SecondPage extends JPanel implements ActionListener {
         add(life3);
         add(life4);
         add(life5);
+		add(ordersheet);
 
-        menu.setBounds(30, 30, 300, 300);   //(x, y, 가로, 세로)
+          //(x, y, 가로, 세로)
 		b_topbun.setBounds(370, 30, 135, 65);
 		b_topbun.setBorderPainted(false);
 		b_topbun.setBackground(Color.white);
@@ -111,13 +116,16 @@ public class SecondPage extends JPanel implements ActionListener {
 		pan.setBounds(30, 450, 320, 270);
 		pan.setOpaque(false);
 		
-		dish.setBounds(370, 645, 300, 75);
+		dish.setBounds(370, 645, 500, 500);
+		pan.setOpaque(false);
+		
+		ordersheet.setBounds(30, 50, 300, 330);
 
-        life1.setBounds(700, 370, 50, 50);
-        life2.setBounds(764, 370, 50, 50);
-        life3.setBounds(828, 370, 50, 50);
-        life4.setBounds(894, 370, 50, 50);
-        life5.setBounds(958, 370, 50, 50);
+        life1.setBounds(700, 370, 60, 50);
+        life2.setBounds(764, 370, 60, 50);
+        life3.setBounds(828, 370, 60, 50);
+        life4.setBounds(894, 370, 60, 50);
+        life5.setBounds(958, 370, 60, 50);
         
         patty = new ImageIcon("patty1.png");
     }

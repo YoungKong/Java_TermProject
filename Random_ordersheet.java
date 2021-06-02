@@ -1,26 +1,22 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class Random_ordersheet extends JFrame{
+public class Random_ordersheet extends JPanel{
 	
-	final Image topbun = new ImageIcon("빵_위.png").getImage();
-	final Image bottombun = new ImageIcon("빵_아래.png").getImage();
-	final Image cheese = new ImageIcon("치즈.png").getImage();
-	final Image lettuce = new ImageIcon("양상추.png").getImage();
-	final Image onion = new ImageIcon("양파.png").getImage();
-	final Image patty = new ImageIcon("패티.png").getImage();
-	final Image tomato = new ImageIcon("토마토.png").getImage();
+	final Image topbun = new ImageIcon("topbun.png").getImage();
+	final Image bottombun = new ImageIcon("bottombun.png").getImage();
+	final Image cheese = new ImageIcon("cheese.png").getImage();
+	final Image lettuce = new ImageIcon("lettuce.png").getImage();
+	final Image onion = new ImageIcon("onion.png").getImage();
+	final Image patty = new ImageIcon("patty2.png").getImage();
+	final Image tomato = new ImageIcon("tomato.png").getImage();
 	Image random1,random2,random3,random4, random5;
 	int r1,r2,r3,r4,r5;
 	int level=1;
 	Image [] recipe= new Image[7];
 	
 	public Random_ordersheet() {
-		setTitle("ordersheet");
-		setSize(600, 400);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		setVisible(true);
+	
 
 	}
 	
@@ -59,9 +55,9 @@ public class Random_ordersheet extends JFrame{
 		}
 		else {
 			g.drawImage(random1,30,90,this);
-			g.drawImage(random2,30,130,this);
-			g.drawImage(random3,30,170,this);
-			g.drawImage(bottombun,30,210,this);
+			g.drawImage(random2,30,200,this);
+			g.drawImage(random3,30,300,this);
+			g.drawImage(bottombun,30,400,this);
 			recipe[0]=bottombun;
 			recipe[1]=random1;
 			recipe[2]=random2;
