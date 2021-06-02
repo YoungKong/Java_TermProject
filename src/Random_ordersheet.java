@@ -2,13 +2,22 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Random_ordersheet extends JFrame{
-	Image topbun, bottombun, cheese, lettuce, onion, patty, tomato, random1,random2,random3,random4, random5;
+	
+	final Image topbun = new ImageIcon("ªß_¿ß.png").getImage();
+	final Image bottombun = new ImageIcon("ªß_æ∆∑°.png").getImage();
+	final Image cheese = new ImageIcon("ƒ°¡Ó.png").getImage();
+	final Image lettuce = new ImageIcon("æÁªÛ√ﬂ.png").getImage();
+	final Image onion = new ImageIcon("æÁ∆ƒ.png").getImage();
+	final Image patty = new ImageIcon("∆–∆º.png").getImage();
+	final Image tomato = new ImageIcon("≈‰∏∂≈‰.png").getImage();
+	Image random1,random2,random3,random4, random5;
 	int r1,r2,r3,r4,r5;
 	int level=1;
+	Image [] recipe= new Image[7];
 	
 	public Random_ordersheet() {
 		setTitle("ordersheet");
-		setSize(600, 400);
+		setSize(600, 500);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		setVisible(true);
@@ -16,17 +25,11 @@ public class Random_ordersheet extends JFrame{
 	}
 	
 	public void paint(Graphics g) {
-		topbun = new ImageIcon("bun1.JPG").getImage();
-		bottombun = new ImageIcon("bun2.JPG").getImage();
-		cheese = new ImageIcon("cheese.JPG").getImage();
-		lettuce = new ImageIcon("lettuce.JPG").getImage();
-		onion = new ImageIcon("onion.JPG").getImage();
-		patty = new ImageIcon("patty.JPG").getImage();
-		tomato = new ImageIcon("tomato.JPG").getImage();
+		
 		
 		Image ingredient[] = {cheese, lettuce, onion, patty, tomato};
 		
-		r1=(int)((Math.random()*5));	//0~4 ÎûúÎç§ ÏÉùÏÑ±
+		r1=(int)((Math.random()*5));	//0~4 ∑£¥˝ ª˝º∫
 		r2=(int)((Math.random()*5));
 		r3=(int)((Math.random()*5));
 		r4=(int)((Math.random()*5));
@@ -40,28 +43,36 @@ public class Random_ordersheet extends JFrame{
 		
 
 		if(level==3) {
-			g.drawImage(random1,50,90,this);
-			g.drawImage(random2,50,130,this);
-			g.drawImage(random3,50,170,this);
-			g.drawImage(random4,50,210,this);
-			g.drawImage(random5,50,250,this);
-			g.drawImage(bottombun,50,290,this);
+			g.drawImage(random1,30,90,this);
+			g.drawImage(random2,30,130,this);
+			g.drawImage(random3,30,170,this);
+			g.drawImage(random4,30,210,this);
+			g.drawImage(random5,30,250,this);
+			g.drawImage(bottombun,30,290,this);
 		}
 		else if(level==2) {
-			g.drawImage(random1,50,90,this);
-			g.drawImage(random2,50,130,this);
-			g.drawImage(random3,50,170,this);
-			g.drawImage(random4,50,210,this);
-			g.drawImage(bottombun,50,250,this);
+			g.drawImage(random1,30,90,this);
+			g.drawImage(random2,30,130,this);
+			g.drawImage(random3,30,170,this);
+			g.drawImage(random4,30,210,this);
+			g.drawImage(bottombun,30,250,this);
 		}
 		else {
-			g.drawImage(random1,50,90,this);
-			g.drawImage(random2,50,130,this);
-			g.drawImage(random3,50,170,this);
-			g.drawImage(bottombun,50,210,this);
+			g.drawImage(random1,30,90,this);
+			g.drawImage(random2,30,200,this);
+			g.drawImage(random3,30,300,this);
+			g.drawImage(bottombun,30,400,this);
+			recipe[0]=bottombun;
+			recipe[1]=random1;
+			recipe[2]=random2;
+			recipe[3]=random3;
+			recipe[4]=topbun;
+			for(int i=0;i<recipe.length;i++){
+				System.out.println(recipe[i]);
+			}
 		}
 
-		g.drawImage(topbun,50,50,this);
+		g.drawImage(topbun,30,30,this);
 		
 
 	}
