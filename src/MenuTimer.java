@@ -16,13 +16,10 @@ class MenuTimer extends JFrame{
     }
 
     MenuTimer(){
-        //Dimension dim = new Dimension(270, 135); //JFrame size
-
         this.setTitle("메뉴당 10초 제한");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout(10,10));
-        //this.setPreferredSize(dim);
-
+        
         MyThread th = new MyThread();
         la=new JLabel();
         la1=new JLabel();
@@ -71,7 +68,7 @@ class MenuTimer extends JFrame{
             	sec  = n % 60; 
                 min  = n / 60 % 60;
                 
-                if(sec==0) {
+                if( sec < 10) {
                 	la1.setText(String.format(" ※ 주문당 제한시간: 10초"));
                 }
                 if(sec==10) {
