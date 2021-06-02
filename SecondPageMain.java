@@ -6,8 +6,8 @@ public class SecondPageMain extends JFrame{
 	SecondPage imgP;
 	
 	public SecondPageMain(String title){
-		//super(title);
-		imgP = new SecondPage();
+		super(title);
+		imgP = new SecondPage(1);
 		content = getContentPane();
 		content.add(imgP, BorderLayout.CENTER);
 		setSize(1100,800);

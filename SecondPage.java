@@ -8,36 +8,48 @@ import javax.swing.border.*;
 
 public class SecondPage extends JPanel implements ActionListener {
     JButton b_topbun, b_bottombun, b_lettuce, b_tomato, b_cheese, b_patty, b_onion, b_coke, b_sprite;
-    ImageIcon patty;
+    ImageIcon patty_img;
     Image back;
     JLabel patty_pan, pan;
+    Random_ordersheet rp=new Random_ordersheet();
+    final Image topbun = new ImageIcon("topbun.png").getImage();
+	final Image bottombun = new ImageIcon("bottombun.png").getImage();
+	final Image cheese = new ImageIcon("cheese.png").getImage();
+	final Image lettuce = new ImageIcon("lettuce.png").getImage();
+	final Image onion = new ImageIcon("onion.png").getImage();
+	final Image patty = new ImageIcon("patty2.png").getImage();
+	final Image tomato = new ImageIcon("tomato.png").getImage();
+	Image random1,random2,random3,random4, random5;
+	int r1,r2,r3,r4,r5;
+	int level=1;
+	Image [] recipe= new Image[7];
    
-    public SecondPage(){    
+    public SecondPage(int level){    
   		
     	back = new ImageIcon("back.png").getImage();
     	setLayout(null);
 
-        //∏ﬁ¥∫ ¿ÃπÃ¡ˆ
-        JLabel menu = new JLabel();
-        menu.setIcon(new ImageIcon("menu.jpg"));
-
-        //ª˝∏Ì 1~5∞≥
+        //ÏÉùÎ™Ö 1~5Í∞ú
         JLabel life1  = new JLabel();
-        life1.setIcon(new ImageIcon("∆–∆º1.png"));
+        life1.setIcon(new ImageIcon("life.png"));
         JLabel life2  = new JLabel();
-        life2.setIcon(new ImageIcon("apple.jpg"));
+        life2.setIcon(new ImageIcon("life.png"));
         JLabel life3  = new JLabel();
-        life3.setIcon(new ImageIcon("apple.jpg"));
+        life3.setIcon(new ImageIcon("life.png"));
         JLabel life4  = new JLabel();
-        life4.setIcon(new ImageIcon("apple.jpg"));
+        life4.setIcon(new ImageIcon("life.png"));
         JLabel life5  = new JLabel();
-        life5.setIcon(new ImageIcon("apple.jpg"));
+        life5.setIcon(new ImageIcon("life.png"));
 
-        //¡¢Ω√ ¿ÃπÃ¡ˆ
+        //Ï†ëÏãú Ïù¥ÎØ∏ÏßÄ
         JLabel dish = new JLabel();
-        dish.setIcon(new ImageIcon("¿Ôπ›.png"));
-
-        //«‹πˆ∞≈ ¿Á∑· πˆ∆∞ //æ»ø° ¿ÃπÃ¡ˆ ∆ƒ¿œ √ﬂ∞°«œ±‚.
+        dish.setIcon(new ImageIcon("dish.png"));
+        JLabel ordersheet = new JLabel();
+        ordersheet.setIcon(new ImageIcon("order.png"));
+        
+        
+        
+        //ÌñÑÎ≤ÑÍ±∞ Ïû¨Î£å Î≤ÑÌäº //ÏïàÏóê Ïù¥ÎØ∏ÏßÄ ÌååÏùº Ï∂îÍ∞ÄÌïòÍ∏∞.
         b_topbun = new JButton(new ImageIcon("topbun.png")); 
         b_bottombun = new JButton(new ImageIcon("bottombun.png"));
         b_lettuce = new JButton(new ImageIcon("lettuce.png"));
@@ -52,8 +64,10 @@ public class SecondPage extends JPanel implements ActionListener {
      	
         patty_pan = new JLabel();
     	patty_pan.setBounds(140,570,200,100);
-    	
-        add(patty_pan);
+ 
+    	add(rp);
+    	add(ordersheet);
+    	add(patty_pan);
         add(b_topbun);
         add(b_bottombun);
         add(b_lettuce);
@@ -64,14 +78,17 @@ public class SecondPage extends JPanel implements ActionListener {
         add(b_coke);
         add(b_sprite);
         add(pan);
-        add(dish);
+       
         add(life1);
         add(life2);
         add(life3);
         add(life4);
         add(life5);
-
-        menu.setBounds(30, 30, 300, 300);   //(x, y, ∞°∑Œ, ºº∑Œ)
+        add(dish);
+        
+        rp.setBounds(0, -10, 300, 300);
+        
+        //(x, y, Í∞ÄÎ°ú, ÏÑ∏Î°ú)
 		b_topbun.setBounds(370, 30, 135, 65);
 		b_topbun.setBorderPainted(false);
 		b_topbun.setBackground(Color.white);
@@ -110,16 +127,15 @@ public class SecondPage extends JPanel implements ActionListener {
         
 		pan.setBounds(30, 450, 320, 270);
 		pan.setOpaque(false);
-		
-		dish.setBounds(370, 645, 300, 75);
 
-        life1.setBounds(700, 370, 50, 50);
-        life2.setBounds(764, 370, 50, 50);
-        life3.setBounds(828, 370, 50, 50);
-        life4.setBounds(894, 370, 50, 50);
-        life5.setBounds(958, 370, 50, 50);
-        
-        patty = new ImageIcon("patty1.png");
+        life1.setBounds(700, 370, 60, 50);
+        life2.setBounds(764, 370, 60, 50);
+        life3.setBounds(828, 370, 60, 50);
+        life4.setBounds(894, 370, 60, 50);
+        life5.setBounds(958, 370, 60, 50);
+        dish.setBounds(150,400, 600, 500);
+        ordersheet.setBounds(-275, 20, 700, 300);
+        patty_img = new ImageIcon("patty1.png");
     }
     
     public void paint(Graphics g) {
@@ -129,6 +145,6 @@ public class SecondPage extends JPanel implements ActionListener {
     }
     
     public void actionPerformed(ActionEvent e) {
-    	patty_pan.setIcon(patty);
+    	patty_pan.setIcon(patty_img);
     }
 }
