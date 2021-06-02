@@ -23,7 +23,7 @@ class TotalTimer extends JFrame{
         la=new JLabel();
         la1=new JLabel();
         
-        la.setFont(new Font("Gothic", Font.PLAIN, 50));        
+        la.setFont(new Font("Gothic", Font.PLAIN, 40));        
         la1.setFont(new Font("Gothic", Font.ITALIC, 20));
         la1.setOpaque(true);// 색 설정
         Color color = new Color(255,0,0);

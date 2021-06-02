@@ -7,6 +7,8 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 public class SecondPage extends JPanel implements ActionListener {
+    MenuTimer mt = new MenuTimer();
+    TotalTimer tt = new TotalTimer();
     JButton b_topbun, b_bottombun, b_lettuce, b_tomato, b_cheese, b_patty, b_onion, b_coke, b_sprite;
     ImageIcon patty;
     Image back;

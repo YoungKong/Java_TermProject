@@ -28,7 +28,7 @@ class MenuTimer extends JFrame{
         la1=new JLabel();
         la2=new JLabel();
         
-        la.setFont(new Font("Gothic", Font.PLAIN, 50));
+        la.setFont(new Font("Gothic", Font.PLAIN, 40));
         
         la1.setFont(new Font("Gothic", Font.ITALIC, 20));
         la1.setOpaque(true);// 색 설정
@@ -72,10 +72,10 @@ class MenuTimer extends JFrame{
                 min  = n / 60 % 60;
                 
                 if(sec==0) {
-                	la1.setText(String.format(" ※ 주문 한개당 제한시간은 10초 입니다."));
+                	la1.setText(String.format(" ※ 주문당 제한시간: 10초"));
                 }
                 if(sec==10) {
-                	la1.setText(String.format(" ※ 10초 후 다음 메뉴로 넘어갑니다. "));
+                	la1.setText(String.format(" ※ 주문당 제한시간: 10초"));
                     n=0; //시간 초기화
                     menu++;
                 }
@@ -84,7 +84,7 @@ class MenuTimer extends JFrame{
                     break;
                 }
                 
-                la2.setText(String.format("        " + menu +" 번째 주문"));
+                la2.setText(String.format( menu +" 번째 주문"));
                 //la.setText(Integer.toString(n++));
 
             	la.setText(String.format("  %02d:%02d", min, sec));
