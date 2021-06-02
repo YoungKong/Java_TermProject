@@ -11,6 +11,8 @@ public class SecondPage extends JPanel implements ActionListener {
     ImageIcon patty_img;
     Image back;
     JLabel patty_pan, pan;
+    TotalTimer tt = new TotalTimer();
+    MenuTimer mt = new MenuTimer();
     Random_ordersheet rp=new Random_ordersheet();
     final Image topbun = new ImageIcon("topbun.png").getImage();
 	final Image bottombun = new ImageIcon("bottombun.png").getImage();
@@ -65,6 +67,8 @@ public class SecondPage extends JPanel implements ActionListener {
         patty_pan = new JLabel();
     	patty_pan.setBounds(140,570,200,100);
  
+        add(tt);
+        add(mt);
     	add(rp);
     	add(ordersheet);
     	add(patty_pan);
@@ -87,6 +91,8 @@ public class SecondPage extends JPanel implements ActionListener {
         add(dish);
         
         rp.setBounds(0, -10, 300, 300);
+        mt.setBounds(700, 450, 300, 135);
+        tt.setBounds(700, 615, 300, 135);
         
         //(x, y, 가로, 세로)
 		b_topbun.setBounds(370, 30, 135, 65);
