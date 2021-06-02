@@ -12,7 +12,7 @@ class MenuTimer extends JPanel{
     int menu=1; 
     int n = 0;
 
-    public static void main(String[] args) { //main
+    public static void main(String[] args) { 
         new MenuTimer();
     }
 

@@ -13,6 +13,7 @@ public class SecondPageMain extends JFrame{
 		setSize(1100,800);
 		setVisible(true);
 	}
+	
     public static void main(String[] args) {
         SecondPageMain sp = new SecondPageMain("Burger");
     }
