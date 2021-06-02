@@ -16,7 +16,6 @@ public class Random_ordersheet extends JPanel{
 	Image [] recipe= new Image[7];
 	
 	public Random_ordersheet() {
-	
 
 	}
 	
@@ -25,7 +24,7 @@ public class Random_ordersheet extends JPanel{
 		
 		Image ingredient[] = {cheese, lettuce, onion, patty, tomato};
 		
-		r1=(int)((Math.random()*5));	//0~4 ·£´ý »ý¼º
+		r1=(int)((Math.random()*5));	
 		r2=(int)((Math.random()*5));
 		r3=(int)((Math.random()*5));
 		r4=(int)((Math.random()*5));
@@ -36,7 +35,6 @@ public class Random_ordersheet extends JPanel{
 		random3=ingredient[r3];
 		random4=ingredient[r4];
 		random5=ingredient[r5];
-		
 
 		if(level==3) {
 			g.drawImage(random1,30,90,this);
@@ -54,10 +52,11 @@ public class Random_ordersheet extends JPanel{
 			g.drawImage(bottombun,30,250,this);
 		}
 		else {
-			g.drawImage(random1,30,90,this);
-			g.drawImage(random2,30,200,this);
-			g.drawImage(random3,30,300,this);
-			g.drawImage(bottombun,30,400,this);
+			g.drawImage(bottombun,80,120,this);
+			g.drawImage(random3,80,150,this);
+			g.drawImage(random2,80,120,this);
+			g.drawImage(random1,80,100,this);
+
 			recipe[0]=bottombun;
 			recipe[1]=random1;
 			recipe[2]=random2;
@@ -68,8 +67,8 @@ public class Random_ordersheet extends JPanel{
 			}
 		}
 
-		g.drawImage(topbun,30,30,this);
-		
-
+		g.drawImage(topbun,80,30,this);
+		setOpaque(false);
+		super.paint(g);
 	}
 }
