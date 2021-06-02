@@ -7,156 +7,125 @@ import java.util.Arrays;
 public class  Correctcheck extends JFrame
 {
 	Image [] making=new Image[7];
-	JButton b_topbun, b_bottombun, b_cheese, b_lettuce, b_onion, b_patty, b_tomato;
+	SecondPage sp=new SecondPage();
 	Random_ordersheet rp=new Random_ordersheet();
 	public int i;
-	ButtonGroup b_g;
-
+	
 	Correctcheck() {
 		
-		b_g=new ButtonGroup(); 
-		b_topbun=new JButton("À­»§");  
-        b_bottombun=new JButton("¾Æ·§»§");
-		b_cheese=new JButton("Ä¡Áî"); 
-		b_lettuce=new JButton("¾ç»óÃß"); 
-		b_onion=new JButton("¾çÆÄ"); 
-		b_patty=new JButton("ÆÐÆ¼"); 
-		b_tomato=new JButton("Åä¸¶Åä"); 
-        add(b_topbun); add(b_bottombun); add(b_cheese);
-		add(b_lettuce); add(b_onion); add(b_patty);
-		add(b_tomato);
-		b_g.add(b_topbun); b_g.add(b_bottombun); b_g.add(b_cheese);
-		b_g.add(b_lettuce); b_g.add(b_onion); b_g.add(b_patty);
-		b_g.add(b_tomato);
-		
-		b_topbun.setBounds(90,40,100,30);  
-		b_bottombun.setBounds(90,80,103,30);  
-	    b_cheese.setBounds(90,120,104,30); 
-		b_lettuce.setBounds(90,160,104,30); 
-		b_onion.setBounds(90,200,104,30); 
-		b_patty.setBounds(90,240,104,30); 
-		b_tomato.setBounds(90,280,104,30); 
-		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
-        setLayout(null);  
-        setVisible(true);  
-        setSize(600,400);
-
 		i=0;
 
-				
-
-				b_topbun.addActionListener(new ActionListener(){
+				sp.b_topbun.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
-						making[i]=new ImageIcon("»§_À§.png").getImage();
+						making[i]=new ImageIcon("ë¹µ_ìœ„.png").getImage();
 						if(rp.recipe[i]==making[i]){
-						System.out.println("¸Â´Â Àç·áÀÔ´Ï´Ù.");
+						System.out.println("ë§žëŠ” ìž¬ë£Œìž…ë‹ˆë‹¤.");
 						i++;
 						}
 				
 						else if (rp.recipe[i]!=making[i])
 						{
-						System.out.println("Æ²·È½À´Ï´Ù.");
+						System.out.println("í‹€ë ¸ìŠµë‹ˆë‹¤.");
 						
 						}
 			
 					}
 				});
 
-				b_bottombun.addActionListener(new ActionListener(){
+				sp.b_bottombun.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
-						making[i]=new ImageIcon("»§_¾Æ·¡.png").getImage();
+						making[i]=new ImageIcon("ë¹µ_ì•„ëž˜.png").getImage();
 						if(rp.recipe[i]==making[i]){
-						System.out.println("¸Â´Â Àç·áÀÔ´Ï´Ù.");
+						System.out.println("ë§žëŠ” ìž¬ë£Œìž…ë‹ˆë‹¤.");
 						i++;
 						
 						}
 				
 						else if (rp.recipe[i]!=making[i])
 						{
-						System.out.println("Æ²·È½À´Ï´Ù.");
+						System.out.println("í‹€ë ¸ìŠµë‹ˆë‹¤.");
 						
 						}
 					}
 				});
 
-				b_cheese.addActionListener(new ActionListener(){
+				sp.b_cheese.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
-						making[i]=new ImageIcon("Ä¡Áî.png").getImage();
+						making[i]=new ImageIcon("ì¹˜ì¦ˆ.png").getImage();
 						if(rp.recipe[i]==making[i]){
-						System.out.println("¸Â´Â Àç·áÀÔ´Ï´Ù.");
+						System.out.println("ë§žëŠ” ìž¬ë£Œìž…ë‹ˆë‹¤.");
 						i++;
 						}
 				
 						else if (rp.recipe[i]!=making[i])
 						{
-						System.out.println("Æ²·È½À´Ï´Ù.");
+						System.out.println("í‹€ë ¸ìŠµë‹ˆë‹¤.");
 						
 						}
 					}
 				});
 
-				b_lettuce.addActionListener(new ActionListener(){
+				sp.b_lettuce.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
 						making[i]=rp.lettuce;
 						if(rp.recipe[i]==making[i]){
-						System.out.println("¸Â´Â Àç·áÀÔ´Ï´Ù.");
+						System.out.println("ë§žëŠ” ìž¬ë£Œìž…ë‹ˆë‹¤.");
 						i++;
 						
 						}
 				
 						else if (rp.recipe[i]!=making[i])
 						{
-						System.out.println("Æ²·È½À´Ï´Ù.");
+						System.out.println("í‹€ë ¸ìŠµë‹ˆë‹¤.");
 						
 						}
 					}
 				});
 
-				b_onion.addActionListener(new ActionListener(){
+				sp.b_onion.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
 						making[i]=rp.onion;
 						if(rp.recipe[i]==making[i]){
-						System.out.println("¸Â´Â Àç·áÀÔ´Ï´Ù.");
+						System.out.println("ë§žëŠ” ìž¬ë£Œìž…ë‹ˆë‹¤.");
 						i++;
 						
 						}
 				
 						else if (rp.recipe[i]!=making[i])
 						{
-						System.out.println("Æ²·È½À´Ï´Ù.");
+						System.out.println("í‹€ë ¸ìŠµë‹ˆë‹¤.");
 						
 						}
 					}
 				});
-				b_patty.addActionListener(new ActionListener(){
+				sp.b_patty.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
 						making[i]=rp.patty;
 						if(rp.recipe[i]==making[i]){
-						System.out.println("¸Â´Â Àç·áÀÔ´Ï´Ù.");
+						System.out.println("ë§žëŠ” ìž¬ë£Œìž…ë‹ˆë‹¤.");
 						i++;
 						
 						}
 				
 						else if (rp.recipe[i]!=making[i])
 						{
-						System.out.println("Æ²·È½À´Ï´Ù.");
+						System.out.println("í‹€ë ¸ìŠµë‹ˆë‹¤.");
 						
 						}
 					}
 				});
-				b_tomato.addActionListener(new ActionListener(){
+				sp.b_tomato.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent e){
 						making[i]=rp.tomato;
 						if(rp.recipe[i]==making[i]){
-						System.out.println("¸Â´Â Àç·áÀÔ´Ï´Ù.");
+						System.out.println("ë§žëŠ” ìž¬ë£Œìž…ë‹ˆë‹¤.");
 						i++;
 						
 						}
 				
 						else if (rp.recipe[i]!=making[i])
 						{
-						System.out.println("Æ²·È½À´Ï´Ù.");
+						System.out.println("í‹€ë ¸ìŠµë‹ˆë‹¤.");
 						
 						}
 					}
