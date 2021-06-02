@@ -10,7 +10,7 @@ public class BeefTimer extends JFrame{
     public BeefTimer(){
         JFrame jf = new JFrame();
         jf.setTitle("beeftimer");
-        jf.setSize(800, 600);
+        jf.setSize(700, 500);
         jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JLabel la= new JLabel();
@@ -22,19 +22,19 @@ public class BeefTimer extends JFrame{
             @Override
             public void run(){
                     if(count < 1){  //0~1초: 패티 안익음
-                        la.setIcon(new ImageIcon("beef1.png"));
+                        la.setIcon(new ImageIcon("패티1.png"));
                         jf.getContentPane().add("North", la);
                         jf.setVisible(true);
                         count++;
                     }
                     else if (count < 2){ //1~2초: 패티 익음
-                        la.setIcon(new ImageIcon("beef2.png"));
+                        la.setIcon(new ImageIcon("패티2.png"));
                         jf.getContentPane().add("North", la);
                         jf.setVisible(true);
                         count++;
                     }
                     else{ //2~3초: 패티 탐
-                        la.setIcon(new ImageIcon("beef3.png"));
+                        la.setIcon(new ImageIcon("패티3.png"));
                         jf.getContentPane().add("North", la);
                         jf.setVisible(true);
                         cook_timer.cancel();
