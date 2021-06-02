@@ -14,6 +14,6 @@ public class SecondPageMain extends JFrame{
 		setVisible(true);
 	}
     public static void main(String[] args) {
-        SecondPageMain sp = new SecondPageMain("청파버거");
+        SecondPageMain sp = new SecondPageMain("Burger");
     }
 }

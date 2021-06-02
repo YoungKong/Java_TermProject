@@ -7,19 +7,15 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 public class SecondPage extends JPanel implements ActionListener {
-    JButton bun_top, bun_bot, lettuce, tomato, cheeze, beef, onion, coke, sprite, pan;
+    JButton b_topbun, b_bottombun, b_lettuce, b_tomato, b_cheese, b_patty, b_onion, b_coke, b_sprite;
     ImageIcon patty;
-    Image back, bun;
-    JLabel img;
+    Image back;
+    JLabel patty_pan, pan;
    
     public SecondPage(){    
   		
-    	back = new ImageIcon("배경.png").getImage();
+    	back = new ImageIcon("back.png").getImage();
     	setLayout(null);
-    	//add(background);
-    	//getContentPane();
-        //setSize(1100, 800);
-        //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //메뉴 이미지
         JLabel menu = new JLabel();
@@ -42,32 +38,31 @@ public class SecondPage extends JPanel implements ActionListener {
         dish.setIcon(new ImageIcon("쟁반.png"));
 
         //햄버거 재료 버튼 //안에 이미지 파일 추가하기.
-        bun_top = new JButton(new ImageIcon("빵_위.png")); 
-		
-        bun_bot = new JButton(new ImageIcon("빵_아래.png"));
-        lettuce = new JButton(new ImageIcon("양상추.png"));
-        tomato = new JButton(new ImageIcon("토마토.png"));
-        cheeze = new JButton(new ImageIcon("치즈.png"));
-        beef = new JButton(new ImageIcon("패티1.png"));
-        beef.addActionListener((ActionListener) this);
-        onion = new JButton(new ImageIcon("양파.png"));
-        coke = new JButton(new ImageIcon("콜라.png"));
-        sprite = new JButton(new ImageIcon("사이다.png"));
-        pan = new JButton(new ImageIcon("프라이팬.png"));
+        b_topbun = new JButton(new ImageIcon("topbun.png")); 
+        b_bottombun = new JButton(new ImageIcon("bottombun.png"));
+        b_lettuce = new JButton(new ImageIcon("lettuce.png"));
+        b_tomato = new JButton(new ImageIcon("tomato.png"));
+        b_cheese = new JButton(new ImageIcon("cheese.png"));
+        b_patty = new JButton(new ImageIcon("patty1.png"));
+        b_patty.addActionListener((ActionListener) this);
+        b_onion = new JButton(new ImageIcon("onion.png"));
+        b_coke = new JButton(new ImageIcon("coke.png"));
+        b_sprite = new JButton(new ImageIcon("sprite.png"));
+        pan = new JLabel(new ImageIcon("pan.png"));
      	
-        img = new JLabel();
-    	img.setBounds(140,570,200,100);
+        patty_pan = new JLabel();
+    	patty_pan.setBounds(140,570,200,100);
     	
-        add(img);
-        add(bun_top);
-        add(bun_bot);
-        add(lettuce);
-        add(tomato);
-        add(cheeze);
-        add(beef);
-        add(onion);
-        add(coke);
-        add(sprite);
+        add(patty_pan);
+        add(b_topbun);
+        add(b_bottombun);
+        add(b_lettuce);
+        add(b_tomato);
+        add(b_cheese);
+        add(b_patty);
+        add(b_onion);
+        add(b_coke);
+        add(b_sprite);
         add(pan);
         add(dish);
         add(life1);
@@ -77,46 +72,44 @@ public class SecondPage extends JPanel implements ActionListener {
         add(life5);
 
         menu.setBounds(30, 30, 300, 300);   //(x, y, 가로, 세로)
-		bun_top.setBounds(370, 30, 135, 65);
-		bun_top.setBorderPainted(false);
-		bun_top.setBackground(Color.white);
+		b_topbun.setBounds(370, 30, 135, 65);
+		b_topbun.setBorderPainted(false);
+		b_topbun.setBackground(Color.white);
 
-		bun_bot.setBounds(370, 100, 135, 65);
-		bun_bot.setBorderPainted(false);
-		bun_bot.setBackground(Color.white);
+		b_bottombun.setBounds(370, 100, 135, 65);
+		b_bottombun.setBorderPainted(false);
+		b_bottombun.setBackground(Color.white);
 		
-		lettuce.setBounds(535, 30, 135, 135);
-		lettuce.setBorderPainted(false);
-		lettuce.setBackground(Color.white);
+		b_lettuce.setBounds(535, 30, 135, 135);
+		b_lettuce.setBorderPainted(false);
+		b_lettuce.setBackground(Color.white);
 		
-		tomato.setBounds(700, 30, 135, 135);
-		tomato.setBorderPainted(false);
-		tomato.setBackground(Color.white);
+		b_tomato.setBounds(700, 30, 135, 135);
+		b_tomato.setBorderPainted(false);
+		b_tomato.setBackground(Color.white);
 		
-		cheeze.setBounds(865, 30, 135, 135);
-		cheeze.setBorderPainted(false);
-		cheeze.setBackground(Color.white);
+		b_cheese.setBounds(865, 30, 135, 135);
+		b_cheese.setBorderPainted(false);
+		b_cheese.setBackground(Color.white);
 		
-		beef.setBounds(370, 195, 135, 135);
-		beef.setBorderPainted(false);
-		beef.setBackground(Color.white);
+		b_patty.setBounds(370, 195, 135, 135);
+		b_patty.setBorderPainted(false);
+		b_patty.setBackground(Color.white);
 		
-		onion.setBounds(535, 195, 135, 135);
-		onion.setBorderPainted(false);
-		onion.setBackground(Color.white);
+		b_onion.setBounds(535, 195, 135, 135);
+		b_onion.setBorderPainted(false);
+		b_onion.setBackground(Color.white);
 		
-		coke.setBounds(700, 195, 135, 135);
-		coke.setBorderPainted(false);
-        coke.setBackground(Color.white);
+		b_coke.setBounds(700, 195, 135, 135);
+		b_coke.setBorderPainted(false);
+		b_coke.setBackground(Color.white);
         
-		sprite.setBounds(865, 195, 135, 135);
-		sprite.setBorderPainted(false);
-        sprite.setBackground(Color.white);
+		b_sprite.setBounds(865, 195, 135, 135);
+		b_sprite.setBorderPainted(false);
+		b_sprite.setBackground(Color.white);
         
 		pan.setBounds(30, 450, 320, 270);
-		pan.setBorderPainted(false);
 		pan.setOpaque(false);
-		pan.setBackground(Color.white);
 		
 		dish.setBounds(370, 645, 300, 75);
 
@@ -126,7 +119,7 @@ public class SecondPage extends JPanel implements ActionListener {
         life4.setBounds(894, 370, 50, 50);
         life5.setBounds(958, 370, 50, 50);
         
-        patty = new ImageIcon("패티1.png");
+        patty = new ImageIcon("patty1.png");
     }
     
     public void paint(Graphics g) {
@@ -136,6 +129,6 @@ public class SecondPage extends JPanel implements ActionListener {
     }
     
     public void actionPerformed(ActionEvent e) {
-    	img.setIcon(patty);
+    	patty_pan.setIcon(patty);
     }
 }
