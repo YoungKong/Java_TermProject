@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class SecondPage extends JFrame {
-    JButton bun, lettuce, tomato, cheeze, beef, onion, coke, sprite, pan;
+    JButton bun_top, bun_bot, lettuce, tomato, cheeze, beef, onion, coke, sprite, pan;
     ImageIcon back;
 
     public SecondPage(String msg){
@@ -31,20 +31,22 @@ public class SecondPage extends JFrame {
 
         //접시 이미지
         JLabel dish = new JLabel();
-        dish.setIcon(new ImageIcon("menu.jpg"));
+        dish.setIcon(new ImageIcon("쟁반.png"));
 
         //햄버거 재료 버튼
-        bun = new JButton(new ImageIcon("")); //안에 이미지 파일 추가하기.
-        lettuce = new JButton("양배추");
-        tomato = new JButton("토마토");
-        cheeze = new JButton("치즈");
-        beef = new JButton("패티");
-        onion = new JButton("양파");
-        coke = new JButton("콜라");
-        sprite = new JButton("사이다");
-        pan = new JButton("팬");
+        bun_top = new JButton(new ImageIcon("빵_위.png")); //안에 이미지 파일 추가하기.
+        bun_bot = new JButton(new ImageIcon("빵_아래.png"));
+        lettuce = new JButton(new ImageIcon("양상추.png"));
+        tomato = new JButton(new ImageIcon("토마토.png"));
+        cheeze = new JButton(new ImageIcon("치즈.png"));
+        beef = new JButton(new ImageIcon("패티1.png"));
+        onion = new JButton(new ImageIcon("양파.png"));
+        coke = new JButton(new ImageIcon("콜라.png"));
+        sprite = new JButton(new ImageIcon("사이다.png"));
+        pan = new JButton(new ImageIcon("프라이팬.png"));
 
-        jf.add(bun);
+        jf.add(bun_top);
+        jf.add(bun_bot);
         jf.add(lettuce);
         jf.add(tomato);
         jf.add(cheeze);
@@ -64,17 +66,18 @@ public class SecondPage extends JFrame {
         jf.getContentPane().add(life5);
         
 
-        jf.getContentPane().add(bun);
-        jf.getContentPane().add(lettuce);
-        jf.getContentPane().add(tomato);
-        jf.getContentPane().add(cheeze);
-        jf.getContentPane().add(beef);
-        jf.getContentPane().add(onion);
-        jf.getContentPane().add(coke);
-        jf.getContentPane().add(sprite);
+//        jf.getContentPane().add(bun_top);
+//        jf.getContentPane().add(lettuce);
+//        jf.getContentPane().add(tomato);
+//        jf.getContentPane().add(cheeze);
+//        jf.getContentPane().add(beef);
+//        jf.getContentPane().add(onion);
+//        jf.getContentPane().add(coke);
+//        jf.getContentPane().add(sprite);
 
         menu.setBounds(30, 30, 300, 300);   //(x, y, 가로, 세로)
-		bun.setBounds(370, 30, 135, 135);
+		bun_top.setBounds(370, 30, 135, 67);
+		bun_bot.setBounds(370, 98, 135, 67);
 		lettuce.setBounds(535, 30, 135, 135);
 		tomato.setBounds(700, 30, 135, 135);
 		cheeze.setBounds(865, 30, 135, 135);
@@ -82,7 +85,7 @@ public class SecondPage extends JFrame {
 		onion.setBounds(535, 195, 135, 135);
 		coke.setBounds(700, 195, 135, 135);
         sprite.setBounds(865, 195, 135, 135);
-        pan.setBounds(30, 450, 300, 270);
+        pan.setBounds(30, 450, 320, 270);
         dish.setBounds(370, 645, 300, 75);
 
         life1.setBounds(700, 370, 50, 50);
