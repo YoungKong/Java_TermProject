@@ -12,12 +12,11 @@ public class SecondPage extends JPanel implements ActionListener {
     Image back;
     JLabel patty_pan, pan;
    
-    public SecondPage(){    
+    public SecondPage(int level){    
   		
     	back = new ImageIcon("back.png").getImage();
     	setLayout(null);
 
-  
         //생명 1~5개
         JLabel life1  = new JLabel();
         life1.setIcon(new ImageIcon("life.png"));
