@@ -41,7 +41,7 @@ public class BeefTimer extends JFrame{
                     }
                 }
             };
-            cook_timer.schedule(cook_task, 3000, 1000); //반복주기 1초, 카운터 3이상이면 타이머 종료
+            cook_timer.schedule(cook_task, 3000, 1000); //카운터 3이상이면 타이머 종료, 반복주기 1초
     }
     public static void main(String[] args) {        
         BeefTimer bf = new BeefTimer();
