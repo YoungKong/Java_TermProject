@@ -16,9 +16,13 @@ class MenuTimer extends JFrame{
     }
 
     MenuTimer(){
+        //Dimension dim = new Dimension(270, 135); //JFrame size
+
         this.setTitle("메뉴당 10초 제한");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout(10,10));
+        //this.setPreferredSize(dim);
+
         MyThread th = new MyThread();
         la=new JLabel();
         la1=new JLabel();
@@ -38,7 +42,8 @@ class MenuTimer extends JFrame{
         this.add("West",la2);
         
         this.setLocationRelativeTo(null);
-        this.setSize(400,200);
+        this.setSize(300, 135);
+        this.setLocation(700, 450); //JFrame 좌표
         this.setVisible(true);
         this.setAlwaysOnTop(true); // 프레임 항상 위에 있게
         th.start();

@@ -11,9 +11,14 @@ class TotalTimer extends JFrame{
     }
 
     TotalTimer(){
+        //Dimension dim = new Dimension(270, 135);
         this.setTitle("게임 타이머");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout(10,10));
+
+        //Dimension dim = new Dimension(270, 135);
+        //this.setPreferredSize(dim);
+
         MyThread th = new MyThread();
         la=new JLabel();
         la1=new JLabel();
@@ -28,7 +33,8 @@ class TotalTimer extends JFrame{
         this.add("North",la1);
         
         this.setLocationRelativeTo(null);
-        this.setSize(400,200);
+        this.setSize(300, 135);
+        this.setLocation(700, 615); //JFrame 좌표
         this.setVisible(true);
         this.setAlwaysOnTop(true); // 프레임 항상 위에 있게
         th.start();
