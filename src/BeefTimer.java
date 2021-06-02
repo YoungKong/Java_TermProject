@@ -21,19 +21,19 @@ public class BeefTimer extends JFrame{
 
             @Override
             public void run(){
-                    if(count < 1){  //0~1초: 패티 안익음
+                    if(count < 2){  //0~2초: 패티 안익음
                         la.setIcon(new ImageIcon("패티1.png"));
                         jf.getContentPane().add("North", la);
                         jf.setVisible(true);
                         count++;
                     }
-                    else if (count < 2){ //1~2초: 패티 익음
+                    else if (count < 4){ //2~4초: 패티 익음
                         la.setIcon(new ImageIcon("패티2.png"));
                         jf.getContentPane().add("North", la);
                         jf.setVisible(true);
                         count++;
                     }
-                    else{ //2~3초: 패티 탐
+                    else{ 
                         la.setIcon(new ImageIcon("패티3.png"));
                         jf.getContentPane().add("North", la);
                         jf.setVisible(true);
@@ -41,7 +41,7 @@ public class BeefTimer extends JFrame{
                     }
                 }
             };
-            cook_timer.schedule(cook_task, 3000, 1000); //카운터 3이상이면 타이머 종료, 반복주기 1초
+            cook_timer.schedule(cook_task, 6000, 1000); //카운터 3이상이면 타이머 종료, 반복주기 1초
     }
     public static void main(String[] args) {        
         BeefTimer bf = new BeefTimer();
