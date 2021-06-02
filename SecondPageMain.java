@@ -11,6 +11,7 @@ public class SecondPageMain extends JFrame{
 		content = getContentPane();
 		content.add(imgP, BorderLayout.CENTER);
 		setSize(1100,800);
+		setLocation(200,30);
 		setVisible(true);
 	}
 	
