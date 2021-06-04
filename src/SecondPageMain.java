@@ -5,14 +5,16 @@ public class SecondPageMain extends JFrame{
 	Container content;
 	SecondPage imgP;
 	
-	public SecondPageMain(int level){
-		super("청파버거");
-		imgP = new SecondPage(level);
+	public SecondPageMain(String title){
+		super(title);
+		imgP = new SecondPage(1);
 		content = getContentPane();
 		content.add(imgP, BorderLayout.CENTER);
 		setSize(1100,800);
-		setLocation(200,30);
 		setVisible(true);
 	}
 	
+    public static void main(String[] args) {
+        SecondPageMain sp = new SecondPageMain("Burger");
+    }
 }
