@@ -14,9 +14,10 @@ public class SecondPage extends JPanel implements ActionListener {
 	//JButton ;
     TotalTimer tt = new TotalTimer();
     MenuTimer mt = new MenuTimer();
-    Random_ordersheet rp=new Random_ordersheet();
+    Random_ordersheet rp;
 	//BeefTimer bt=new BeefTimer();
 	
+	int level;
 	int i=0;
 	int j=4;
 	int score=0;
@@ -31,18 +32,18 @@ public class SecondPage extends JPanel implements ActionListener {
 	final Image tomato = new ImageIcon("tomato.png").getImage();
 	Image random1,random2,random3,random4, random5;
 	int r1,r2,r3,r4,r5;
-	int level=1;
 	Image [] recipe= new Image[7];
 	ImageIcon [] making=new ImageIcon[7];
 	JLabel one,two,three,four,five,six,seven;
 	JLabel [] life= new JLabel[5]; //life 부분 배열로 만듬
 
    
-    public SecondPage(int level){    
-  		
-    	back = new ImageIcon("back.png").getImage();
+    public SecondPage(int level_num){    
+  	level=level_num;				//레벨 추가
+	rp=new Random_ordersheet(level);		//랜덤주문서 매개변수 레벨 추가    
+    	back = new ImageIcon("back.png").getImage();	
     	setLayout(null);
-
+	    
         //생명 1~5개
         for(int a=0;a<5;a++){ //for문으로 라이프 이미지
 			life[a]=new JLabel();
