@@ -11,19 +11,16 @@ public class SecondPage extends JPanel implements ActionListener {
     ImageIcon patty_img;
     Image back;
     JLabel pan,patty_pan;
-	//JButton ;
     TotalTimer tt;
     MenuTimerTest[] mt;
     Random_ordersheet rp;
-
-	//BeefTimer bt=new BeefTimer();
 	
 	int level;
 	int i=0;
 	int j=4;
 	int score=0;
 	int goal;
-
+	int k=0;
 	
 	ImageIcon [] making=new ImageIcon[7];
 	JLabel one,two,three,four,five,six,seven,eight;
@@ -32,6 +29,7 @@ public class SecondPage extends JPanel implements ActionListener {
 
    
     public SecondPage(int level_num){    
+    mt = new MenuTimerTest[1000];
   	tt=new TotalTimer(score);
 	level=level_num;				//레벨 추가
 	rp=new Random_ordersheet(level);		//랜덤주문서 매개변수 레벨 추가    
@@ -101,8 +99,9 @@ public class SecondPage extends JPanel implements ActionListener {
     	patty_pan.setBounds(140,570,200,100);
  
         add(tt.totaltimer);
-	add(rp);
-	reTime();
+        tt.start();
+        add(rp);
+        reTime();
 		
     	add(ordersheet);
     	add(patty_pan);
@@ -189,8 +188,6 @@ public class SecondPage extends JPanel implements ActionListener {
 		seven.setBounds(410,450, 170, 135);
 		dish.setBounds(150,410, 600, 500);
 		eight.setBounds(460,410, 170, 135);
-		
-		
 
     }
     
@@ -304,7 +301,6 @@ public class SecondPage extends JPanel implements ActionListener {
 				reTime();
 				rp.repaint();
 				life();
-				mt.repaint();
 		}
 
 	}	
@@ -319,7 +315,6 @@ public class SecondPage extends JPanel implements ActionListener {
 			reTime();
 			rp.repaint();
 			life();
-			mt.repaint();
 			System.out.println("음료 틀렸습니다.");
 		}
 	}
