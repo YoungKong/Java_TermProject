@@ -212,7 +212,6 @@ public class SecondPage extends JPanel implements ActionListener {
 		if(e.getSource()==b_patty) { //패티가 후라이팬에 들어가면 패티 타이머 가동하기(미완), 팬에 있는 패티를 눌러야 접시에 쌓임(미완)
 			//add(bt);
 			patty_pan.setIcon(patty_img);
-			}
 		}
 		if(e.getSource()==b_topbun) {
 			making[i]=new ImageIcon("topbun.png");
