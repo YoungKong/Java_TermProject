@@ -10,13 +10,17 @@ public class SecondPage extends JPanel implements ActionListener {
     JButton b_topbun, b_bottombun, b_lettuce, b_tomato, b_cheese, b_patty, b_onion, b_coke, b_sprite;
     ImageIcon patty_img;
     Image back;
-    JLabel patty_pan, pan;
+    JLabel pan,patty_pan;
+	//JButton ;
     TotalTimer tt = new TotalTimer();
     MenuTimer mt = new MenuTimer();
-    BeefTimer bt = new BeefTimer();
     Random_ordersheet rp=new Random_ordersheet();
+	//BeefTimer bt=new BeefTimer();
 	
 	int i=0;
+	int j=4;
+	int score=0;
+	int goal;
 	
     final Image topbun = new ImageIcon("topbun.png").getImage();
 	final Image bottombun = new ImageIcon("bottombun.png").getImage();
@@ -31,6 +35,8 @@ public class SecondPage extends JPanel implements ActionListener {
 	Image [] recipe= new Image[7];
 	ImageIcon [] making=new ImageIcon[7];
 	JLabel one,two,three,four,five,six,seven;
+	JLabel [] life= new JLabel[5]; //life 부분 배열로 만듬
+
    
     public SecondPage(int level){    
   		
@@ -38,17 +44,26 @@ public class SecondPage extends JPanel implements ActionListener {
     	setLayout(null);
 
         //생명 1~5개
-        JLabel life1  = new JLabel();
-        life1.setIcon(new ImageIcon("life.png"));
-        JLabel life2  = new JLabel();
-        life2.setIcon(new ImageIcon("life.png"));
-        JLabel life3  = new JLabel();
-        life3.setIcon(new ImageIcon("life.png"));
-        JLabel life4  = new JLabel();
-        life4.setIcon(new ImageIcon("life.png"));
-        JLabel life5  = new JLabel();
-        life5.setIcon(new ImageIcon("life.png"));
-
+        for(int a=0;a<5;a++){ //for문으로 라이프 이미지
+			life[a]=new JLabel();
+			life[a].setIcon(new ImageIcon("life.png"));
+			add(life[a]);
+        }
+		if (level==1)
+		{
+			goal=15000;
+		}
+		
+		if (level==2)
+		{
+			goal=20000;
+		}
+		
+		if (level==3)
+		{
+			goal=25000;
+		}
+       
         //접시 이미지
         JLabel dish = new JLabel();
         dish.setIcon(new ImageIcon("dish.png"));
@@ -92,10 +107,8 @@ public class SecondPage extends JPanel implements ActionListener {
  
         add(tt);
         add(mt);
-    	//if(mt.menu==1){
-		//	add(rp);
-		//}
 		add(rp);
+		
 		
     	add(ordersheet);
     	add(patty_pan);
@@ -109,12 +122,6 @@ public class SecondPage extends JPanel implements ActionListener {
         add(b_coke);
         add(b_sprite);
         add(pan);
-       
-        add(life1);
-        add(life2);
-        add(life3);
-        add(life4);
-        add(life5);
 		
 		add(seven);
 		add(six);
@@ -170,11 +177,11 @@ public class SecondPage extends JPanel implements ActionListener {
 		pan.setBounds(30, 450, 320, 270);
 		pan.setOpaque(false);
 
-        life1.setBounds(700, 370, 60, 50);
-        life2.setBounds(764, 370, 60, 50);
-        life3.setBounds(828, 370, 60, 50);
-        life4.setBounds(894, 370, 60, 50);
-        life5.setBounds(958, 370, 60, 50);
+        life[0].setBounds(700, 370, 60, 50);
+        life[1].setBounds(764, 370, 60, 50);
+        life[2].setBounds(828, 370, 60, 50);
+        life[3].setBounds(894, 370, 60, 50);
+        life[4].setBounds(958, 370, 60, 50);
         
         ordersheet.setBounds(-275, 20, 700, 300);
         patty_img = new ImageIcon("patty1.png");
@@ -198,141 +205,211 @@ public class SecondPage extends JPanel implements ActionListener {
     	super.paint(g);
     }
     
-    public void actionPerformed(ActionEvent e) {
+
+	public void actionPerformed(ActionEvent e) {
     	
 		if(e.getSource()==b_patty) { //패티가 후라이팬에 들어가면 패티 타이머 가동하기(미완), 팬에 있는 패티를 눌러야 접시에 쌓임(미완)
+			//add(bt);
 			patty_pan.setIcon(patty_img);
-			add(mt);
+//			if(bt.count>=2&&bt.count<4){
+//				patty_pan.setIcon(new ImageIcon("patty2.png"));
+//			}
+//			if(bt.count>=4&&bt.count<5){
+//				patty_pan.setIcon(new ImageIcon("patty3.png"));
+//			}
 		}
 		if(e.getSource()==b_topbun) {
 			making[i]=new ImageIcon("topbun.png");
 			makelabel(i);
-			if(rp.recipe[i]==making[i].getImage()){//여기 if문을 함수로 만드니까 i++때문에 인덱스1번부터 클릭반영이 안됨.
-				System.out.println("맞는 재료입니다.");
-				i++;	
-			}
-		
-			else if (rp.recipe[i]!=making[i].getImage())
+//			if(rp.recipe[i]==making[i].getImage()){//여기 if문을 함수로 만드니까 i++때문에 인덱스1번부터 클릭반영이 안됨.
+//				System.out.println("맞는 재료입니다.");
+//				i++;
+//			}
+//		
+//			else if (rp.recipe[i]!=making[i].getImage())
+//			{
+//				System.out.println("틀렸습니다.");
+//				clear(); //틀릴경우 주문서는 다시 그려지지만 접시의 라벨은 지워지지않음. clear()로 지워져도 다시 그려지지않음 (해결)
+//				i=0;
+//				rp.repaint();//틀릴경우 주문서 다시그림
+//				life();
+//
+//			}
+			rule();
+			if (rule()==true)
 			{
-				System.out.println("틀렸습니다.");
-				//clear(); 틀릴경우 주문서는 다시 그려지지만 접시의 라벨은 지워지지않음. clear()로 지워져도 다시 그려지지않음
-				i=0;
-				rp.repaint();//틀릴경우 주문서 다시그림
-
+				i++;
 			}
-			//rule(i);
-			
+			if(rule()==false){
+				i=0;
+				life();
+			}
+//			
 		}
 		if(e.getSource()==b_bottombun) {
 			making[i]=new ImageIcon("bottombun.png");
 			makelabel(i);
-			if(rp.recipe[i]==making[i].getImage()){
-				System.out.println("맞는 재료입니다.");
-				i++;	
-			}
-		
-			else if (rp.recipe[i]!=making[i].getImage())
+//			if(rp.recipe[i]==making[i].getImage()){
+//				System.out.println("맞는 재료입니다.");
+//				i++;	
+//			}
+//		
+//			else if (rp.recipe[i]!=making[i].getImage())
+//			{
+//				System.out.println("틀렸습니다.");
+//				clear();
+//				i=0;
+//				rp.repaint();
+//				life();
+//
+//			}
+			rule();
+			if (rule()==true)
 			{
-				System.out.println("틀렸습니다.");
-				//clear();
-				i=0;
-				rp.repaint();
-
+				i++;
 			}
-			//rule(i);
+			if(rule()==false){
+				i=0;
+				life();
+			}
 		}
 		if(e.getSource()==patty_pan) {
 			making[i]=new ImageIcon("patty2.png");
 			makelabel(i);
-			if(rp.recipe[i]==making[i].getImage()){//여기 if문을 함수로 만드니까 i++때문에 인덱스1번부터 클릭반영이 안됨.
-				System.out.println("맞는 재료입니다.");
-				i++;	
-			}
-		
-			else if (rp.recipe[i]!=making[i].getImage())
+//			if(rp.recipe[i]==making[i].getImage()){//여기 if문을 함수로 만드니까 i++때문에 인덱스1번부터 클릭반영이 안됨.
+//				System.out.println("맞는 재료입니다.");
+//				i++;	
+//			}
+//		
+//			else if (rp.recipe[i]!=making[i].getImage())
+//			{
+//				System.out.println("틀렸습니다.");
+//				clear();
+//				i=0;
+//				rp.repaint();
+//				life();
+//
+//			}
+			rule();
+			if (rule()==true)
 			{
-				System.out.println("틀렸습니다.");
-				//clear();
-				i=0;
-				rp.repaint();
-
+				i++;
 			}
-			//rule(i);
-			
+			if(rule()==false){
+				i=0;
+				life();
+			}
+//			
 		}
 		if(e.getSource()==b_lettuce) {
 			making[i]=new ImageIcon("lettuce.png");
 			makelabel(i);
-			if(rp.recipe[i]==making[i].getImage()){
-				System.out.println("맞는 재료입니다.");
-				i++;	
-			}
-		
-			else if (rp.recipe[i]!=making[i].getImage())
+//			if(rp.recipe[i]==making[i].getImage()){
+//				System.out.println("맞는 재료입니다.");
+//				i++;	
+//			}
+//		
+//			else if (rp.recipe[i]!=making[i].getImage())
+//			{
+//				System.out.println("틀렸습니다.");
+//				clear();
+//				i=0;
+//				rp.repaint();
+//				life();
+//
+//			}
+			rule();
+			if (rule()==true)
 			{
-				System.out.println("틀렸습니다.");
-				//clear();
-				i=0;
-				rp.repaint();
-
+				i++;
 			}
-			//rule(i);
+			if(rule()==false){
+				i=0;
+				life();
+			}
 		
 		}
 		if(e.getSource()==b_cheese) {
 			making[i]=new ImageIcon("cheese.png");
 			makelabel(i);
-			if(rp.recipe[i]==making[i].getImage()){
-				System.out.println("맞는 재료입니다.");
-				i++;	
-			}
-		
-			else if (rp.recipe[i]!=making[i].getImage())
+//			if(rp.recipe[i]==making[i].getImage()){
+//				System.out.println("맞는 재료입니다.");
+//				i++;	
+//			}
+//		
+//			else if (rp.recipe[i]!=making[i].getImage())
+//			{
+//				System.out.println("틀렸습니다.");
+//				clear();
+//				i=0;
+//				rp.repaint(); 
+//				life();
+//
+//			}
+			rule();
+			if (rule()==true)
 			{
-				System.out.println("틀렸습니다.");
-				//clear();
-				i=0;
-				rp.repaint(); 
-
+				i++;
 			}
-			//rule(i);
+			if(rule()==false){
+				i=0;
+				life();
+			}
 		
 		}
 		if(e.getSource()==b_onion) {
 			making[i]=new ImageIcon("onion.png");
 			makelabel(i);
-			if(rp.recipe[i]==making[i].getImage()){
-				System.out.println("맞는 재료입니다.");
-				i++;	
-			}
-		
-			else if (rp.recipe[i]!=making[i].getImage())
+//			if(rp.recipe[i]==making[i].getImage()){
+//				System.out.println("맞는 재료입니다.");
+//				i++;	
+//			}
+//		
+//			else if (rp.recipe[i]!=making[i].getImage())
+//			{
+//				System.out.println("틀렸습니다.");
+//				clear();
+//				i=0;
+//				rp.repaint();
+//				life();
+//
+//			}
+			rule();
+			if (rule()==true)
 			{
-				System.out.println("틀렸습니다.");
-				//clear();
-				i=0;
-				rp.repaint();
-
+				i++;
 			}
-			//rule(i);
+			else if(rule()==false){
+				i=0;
+				life();
+			}
 		}
 		if(e.getSource()==b_tomato) {
 			making[i]=new ImageIcon("tomato.png");
 			makelabel(i);
-			if(rp.recipe[i]==making[i].getImage()){
-				System.out.println("맞는 재료입니다.");
-				i++;	
-			}
-		
-			else if (rp.recipe[i]!=making[i].getImage())
+//			if(rp.recipe[i]==making[i].getImage()){
+//				System.out.println("맞는 재료입니다.");
+//				i++;	
+//			}
+//		
+//			else if (rp.recipe[i]!=making[i].getImage())
+//			{
+//				System.out.println("틀렸습니다.");
+//				i=0;
+//				clear();
+//				rp.repaint();
+//				life();
+//
+//			}
+			rule();
+			if (rule()==true)
 			{
-				System.out.println("틀렸습니다.");
-				i=0;
-				//clear();
-				rp.repaint();
-
+				i++;
 			}
-			//rule(i);
+			if(rule()==false){
+				i=0;
+				life();
+			}
 		
 		}
 		if(e.getSource()==b_coke) {
@@ -370,15 +447,17 @@ public class SecondPage extends JPanel implements ActionListener {
 
 	}
 
-	public int rule(int i){
+	public boolean rule(){
+		boolean correct=false;
 		if(rp.recipe[i]==making[i].getImage()){
 				System.out.println("맞는 재료입니다.");
-				i++;	
+				correct=true;
 				if(level==1){//level1의 경우 인덱스가 4이상까지 맞게 했다면 배열을 초기화하고 다시 주문서룰 불러옴
 					if(i>4){
 						i=0;
 						clear();
-						add(rp);
+						rp.repaint();
+						goal+=2000;
 						
 					}
 				}
@@ -386,7 +465,8 @@ public class SecondPage extends JPanel implements ActionListener {
 					if(i>5){
 						i=0;
 						clear();
-						add(rp);
+						rp.repaint();
+						goal+=2000;
 						
 					}
 				}
@@ -394,7 +474,8 @@ public class SecondPage extends JPanel implements ActionListener {
 					if(i>6){
 						i=0;
 						clear();
-						add(rp);
+						rp.repaint();
+						goal+=2000;
 						
 					}
 				}
@@ -402,21 +483,40 @@ public class SecondPage extends JPanel implements ActionListener {
 		else if (rp.recipe[i]!=making[i].getImage())
 		{
 				System.out.println("틀렸습니다.");
-				i=0;
+				
 				clear();
-				add(rp);
+				rp.repaint();
+				//life();
+				correct=false;
 		}
 
-		return i;
+		return correct;
 	}
 
 	public void clear(){
-		remove(one);
-		remove(two);
-		remove(three);
-		remove(four);
-		remove(five);
-		remove(six);
-		remove(seven);
+		one.setIcon(null);
+		two.setIcon(null);
+		three.setIcon(null);
+		four.setIcon(null);
+		five.setIcon(null);
+		six.setIcon(null);
+		seven.setIcon(null);
+	}   
+	
+	public void life(){
+		life[j].setIcon(null);
+		j--;
+		if (j<0)
+		{
+			JFrame end =new JFrame();
+			JLabel endl=new JLabel("종료");
+			end.add(endl);
+			end.setSize(300,300);
+			end.setVisible(true);
+			;
+
+		}
 	}
+	
+
 }
