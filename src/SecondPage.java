@@ -212,12 +212,7 @@ public class SecondPage extends JPanel implements ActionListener {
 		if(e.getSource()==b_patty) { //패티가 후라이팬에 들어가면 패티 타이머 가동하기(미완), 팬에 있는 패티를 눌러야 접시에 쌓임(미완)
 			//add(bt);
 			patty_pan.setIcon(patty_img);
-//			if(bt.count>=2&&bt.count<4){
-//				patty_pan.setIcon(new ImageIcon("patty2.png"));
-//			}
-//			if(bt.count>=4&&bt.count<5){
-//				patty_pan.setIcon(new ImageIcon("patty3.png"));
-//			}
+			}
 		}
 		if(e.getSource()==b_topbun) {
 			making[i]=new ImageIcon("topbun.png");
@@ -227,41 +222,32 @@ public class SecondPage extends JPanel implements ActionListener {
 		if(e.getSource()==b_bottombun) {
 			making[i]=new ImageIcon("bottombun.png");
 			makelabel(i);
-			rule();
-			
+			rule();	
 		}
 		if(e.getSource()==patty_pan) {
 			making[i]=new ImageIcon("patty2.png");
 			makelabel(i);
-			rule();
-					
+			rule();			
 		}
 		if(e.getSource()==b_lettuce) {
 			making[i]=new ImageIcon("lettuce.png");
 			makelabel(i);
 			rule();
-			
-		
 		}
 		if(e.getSource()==b_cheese) {
 			making[i]=new ImageIcon("cheese.png");
 			makelabel(i);
 			rule();
-			
-		
 		}
 		if(e.getSource()==b_onion) {
 			making[i]=new ImageIcon("onion.png");
 			makelabel(i);
 			rule();
-			
 		}
 		if(e.getSource()==b_tomato) {
 			making[i]=new ImageIcon("tomato.png");
 			makelabel(i);
 			rule();
-	
-		
 		}
 		if(e.getSource()==b_coke) {
 			
@@ -270,8 +256,6 @@ public class SecondPage extends JPanel implements ActionListener {
 			
 		}
     }
-	
-	
 
 	public void makelabel(int i){
 			if (i==0){
@@ -295,22 +279,18 @@ public class SecondPage extends JPanel implements ActionListener {
 			if (i==6){
 				seven.setIcon(making[i]);
 			}
-
 	}
 
 	public void rule(){
-		
 		if(rp.recipe[i]==making[i].getImage()){
 				System.out.println("맞는 재료입니다.");
 				i++;
-				
 				if(level==1){//level1의 경우 인덱스가 4이상까지 맞게 했다면 배열을 초기화하고 다시 주문서룰 불러옴
 					if(i>4){
 						i=0;
 						clear();
 						rp.repaint();
-						goal+=2000;
-						
+						score+=2000;
 					}
 				}
 				if(level==2){
@@ -318,7 +298,7 @@ public class SecondPage extends JPanel implements ActionListener {
 						i=0;
 						clear();
 						rp.repaint();
-						goal+=2000;
+						score+=2000;
 						
 					}
 				}
@@ -327,8 +307,7 @@ public class SecondPage extends JPanel implements ActionListener {
 						i=0;
 						clear();
 						rp.repaint();
-						goal+=2000;
-						
+						score+=2000;
 					}
 				}
 		}
@@ -338,13 +317,9 @@ public class SecondPage extends JPanel implements ActionListener {
 				i=0;
 				clear();
 				rp.repaint();
-				life();
-				
+				life();		
 		}
-
-		
 	}
-
 	public void clear(){
 		one.setIcon(null);
 		two.setIcon(null);
@@ -366,9 +341,6 @@ public class SecondPage extends JPanel implements ActionListener {
 			end.setSize(300,300);
 			end.setVisible(true);
 			;
-
 		}
 	}
-	
-
 }
