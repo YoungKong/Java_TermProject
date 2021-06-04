@@ -60,12 +60,9 @@ class MenuTimer extends JPanel{
                 //min_m = m / 60 % 60; //total 분
                 sec  = n % 60; 
                 //min  = n / 60 % 60;
+                la1.setText(String.format(" ※ 주문당 제한시간: 10초"));
                 
-                if(sec < 10) {
-                    la1.setText(String.format(" ※ 주문당 제한시간: 10초"));
-                }
                 if(sec==10) {
-                    la1.setText(String.format(" ※ 주문당 제한시간: 10초"));
                     //n=0; //시간 초기화
                     la.setText(String.format("  %02d:%02d", 0, 0));
                     break;
