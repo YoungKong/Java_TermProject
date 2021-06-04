@@ -15,9 +15,10 @@ public class Random_ordersheet extends JPanel{
 	
 	Image random1,random2,random3,random4, random5;
 	int r1,r2,r3,r4,r5;
-	//int level=1;									//ë ˆë²¨ ì§€ì •
+	//int level=1;									//·¹º§ ÁöÁ¤
 	int level;											//
 	Image [] recipe= new Image[7];
+	Image drink_recipe;
 	
 	public Random_ordersheet(int level_num) {			//
 		level=level_num;
@@ -26,7 +27,7 @@ public class Random_ordersheet extends JPanel{
 	public void paint(Graphics g) {
 		
 		Image ingredient[] = {cheese, lettuce, onion, patty, tomato};
-		Image drink[]= {coke, sprite};
+		Image drink[]= {coke, sprite,null};
 		
 		r1=(int)((Math.random()*5));	
 		r2=(int)((Math.random()*5));
@@ -40,17 +41,10 @@ public class Random_ordersheet extends JPanel{
 		random4=ingredient[r4];
 		random5=ingredient[r5];
 		
-		int random_drink=(int)((Math.random()*3));
-		
-		if(random_drink==0) {					//ì½œë¼
-			g.drawImage(drink[0],170,90,this);
-		}
-		else if(random_drink==1) {				//ìŠ¤í”„ë¼ì´íŠ¸
-			g.drawImage(drink[1],170,90,this);
-		}
-//		else if(random_drink==2) {
-//			
-//		}
+		int random_drink=(int)((Math.random()*3));			
+		g.drawImage(drink[random_drink],170,90,this);
+		drink_recipe=drink[random_drink];
+	
 		if(level==3) {
 			g.drawImage(random1,70,90,this);
 			g.drawImage(random2,70,130,this);
