@@ -12,7 +12,7 @@ public class SecondPage extends JPanel implements ActionListener {
     Image back;
     JLabel pan,patty_pan;
 	//JButton ;
-    TotalTimer tt = new TotalTimer();
+    TotalTimer tt;
     MenuTimer mt = new MenuTimer();
     Random_ordersheet rp;
 
@@ -27,19 +27,19 @@ public class SecondPage extends JPanel implements ActionListener {
 	
 	ImageIcon [] making=new ImageIcon[7];
 	JLabel one,two,three,four,five,six,seven,eight;
-	JLabel [] life= new JLabel[5]; //life ºÎºĞ ¹è¿­·Î ¸¸µë
+	JLabel [] life= new JLabel[5]; //life ë¶€ë¶„ ë°°ì—´ë¡œ ë§Œë“¬
 	Image []drink=new Image[1];
 
    
     public SecondPage(int level_num){    
-  	
-	level=level_num;				//·¹º§ Ãß°¡
-	rp=new Random_ordersheet(level);		//·£´ıÁÖ¹®¼­ ¸Å°³º¯¼ö ·¹º§ Ãß°¡    
+  	tt=new TotalTimer(score);
+	level=level_num;				//ë ˆë²¨ ì¶”ê°€
+	rp=new Random_ordersheet(level);		//ëœë¤ì£¼ë¬¸ì„œ ë§¤ê°œë³€ìˆ˜ ë ˆë²¨ ì¶”ê°€    
     	back = new ImageIcon("back.png").getImage();	
     	setLayout(null);
 
-        //»ı¸í 1~5°³
-        for(int a=0;a<5;a++){ //for¹®À¸·Î ¶óÀÌÇÁ ÀÌ¹ÌÁö
+        //ìƒëª… 1~5ê°œ
+        for(int a=0;a<5;a++){ //forë¬¸ìœ¼ë¡œ ë¼ì´í”„ ì´ë¯¸ì§€
 			life[a]=new JLabel();
 			life[a].setIcon(new ImageIcon("life.png"));
 			add(life[a]);
@@ -59,12 +59,12 @@ public class SecondPage extends JPanel implements ActionListener {
 			goal=25000;
 		}
        
-        //Á¢½Ã ÀÌ¹ÌÁö
+        //ì ‘ì‹œ ì´ë¯¸ì§€
         JLabel dish = new JLabel();
         dish.setIcon(new ImageIcon("dish.png"));
         JLabel ordersheet = new JLabel();
         ordersheet.setIcon(new ImageIcon("order.png"));
-		one  = new JLabel();//Á¢½Ã¿¡ ¿Ã¶ó°¥ ¶óº§
+		one  = new JLabel();//ì ‘ì‹œì— ì˜¬ë¼ê°ˆ ë¼ë²¨
 		two  = new JLabel();
 		three  = new JLabel();
 		four  = new JLabel();
@@ -73,7 +73,7 @@ public class SecondPage extends JPanel implements ActionListener {
 		seven  = new JLabel();
 		eight  = new JLabel();
         
-        //ÇÜ¹ö°Å Àç·á ¹öÆ° //¾È¿¡ ÀÌ¹ÌÁö ÆÄÀÏ Ãß°¡ÇÏ±â.
+        //í–„ë²„ê±° ì¬ë£Œ ë²„íŠ¼ //ì•ˆì— ì´ë¯¸ì§€ íŒŒì¼ ì¶”ê°€í•˜ê¸°.
         b_topbun = new JButton(new ImageIcon("topbun.png")); 
         b_bottombun = new JButton(new ImageIcon("bottombun.png"));
         b_lettuce = new JButton(new ImageIcon("lettuce.png"));
@@ -100,9 +100,9 @@ public class SecondPage extends JPanel implements ActionListener {
         patty_pan = new JLabel();
     	patty_pan.setBounds(140,570,200,100);
  
-        add(tt);
+        add(tt.totaltimer);
         add(mt);
-		add(rp);
+	add(rp);
 		
     	add(ordersheet);
     	add(patty_pan);
@@ -130,9 +130,9 @@ public class SecondPage extends JPanel implements ActionListener {
         
         rp.setBounds(0, -10, 300, 300);
         mt.setBounds(700, 450, 300, 135);
-        tt.setBounds(700, 615, 300, 135);
+        tt.totaltimer.setBounds(700, 615, 300, 135);
         
-        //(x, y, °¡·Î, ¼¼·Î)
+        //(x, y, ê°€ë¡œ, ì„¸ë¡œ)
 		b_topbun.setBounds(370, 30, 135, 65);
 		b_topbun.setBorderPainted(false);
 		b_topbun.setBackground(Color.white);
@@ -181,7 +181,7 @@ public class SecondPage extends JPanel implements ActionListener {
         ordersheet.setBounds(-275, 20, 700, 300);
         patty_img = new ImageIcon("patty1.png");
 		
-		one.setBounds(410,570, 170, 135);//Å¬¸¯ÇÑ Àç·á°¡ Á¢½ÃÀ§¿¡ ½×ÀÓ
+		one.setBounds(410,570, 170, 135);//í´ë¦­í•œ ì¬ë£Œê°€ ì ‘ì‹œìœ„ì— ìŒ“ì„
 		two.setBounds(410,550, 170, 135);
 		three.setBounds(410,530, 170, 135);
 		four.setBounds(410,510, 170, 135);
@@ -204,7 +204,7 @@ public class SecondPage extends JPanel implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
     	
-		if(e.getSource()==b_patty) { //ÆĞÆ¼°¡ ÈÄ¶óÀÌÆÒ¿¡ µé¾î°¡¸é ÆĞÆ¼ Å¸ÀÌ¸Ó °¡µ¿ÇÏ±â(¹Ì¿Ï), ÆÒ¿¡ ÀÖ´Â ÆĞÆ¼¸¦ ´­·¯¾ß Á¢½Ã¿¡ ½×ÀÓ(¹Ì¿Ï)
+		if(e.getSource()==b_patty) { //íŒ¨í‹°ê°€ í›„ë¼ì´íŒ¬ì— ë“¤ì–´ê°€ë©´ íŒ¨í‹° íƒ€ì´ë¨¸ ê°€ë™í•˜ê¸°(ë¯¸ì™„), íŒ¬ì— ìˆëŠ” íŒ¨í‹°ë¥¼ ëˆŒëŸ¬ì•¼ ì ‘ì‹œì— ìŒ“ì„(ë¯¸ì™„)
 			//add(bt);
 			patty_pan.setIcon(patty_img);
 		}
@@ -293,14 +293,14 @@ public class SecondPage extends JPanel implements ActionListener {
 	public void rule(){
 
 		if(rp.recipe[i]==making[i].getImage()){
-				System.out.println("¸Â´Â Àç·áÀÔ´Ï´Ù.");
+				System.out.println("ë§ëŠ” ì¬ë£Œì…ë‹ˆë‹¤.");
 				i++;
 					
 		
 		}
 		else if (rp.recipe[i]!=making[i].getImage())
 		{		
-				System.out.println("Æ²·È½À´Ï´Ù.");
+				System.out.println("í‹€ë ¸ìŠµë‹ˆë‹¤.");
 				i=0;
 				clear();
 				rp.repaint();
@@ -314,7 +314,7 @@ public class SecondPage extends JPanel implements ActionListener {
 		
 		if(rp.drink_recipe==drink[0]){
 			
-			System.out.println("¸Â´Â À½·áÀÔ´Ï´Ù.");
+			System.out.println("ë§ëŠ” ìŒë£Œì…ë‹ˆë‹¤.");
 
 		}
 		else if(rp.drink_recipe!=drink[0]){
@@ -325,7 +325,7 @@ public class SecondPage extends JPanel implements ActionListener {
 			rp.repaint();
 			life();
 			mt.repaint();
-			System.out.println("À½·á Æ²·È½À´Ï´Ù.");
+			System.out.println("ìŒë£Œ í‹€ë ¸ìŠµë‹ˆë‹¤.");
 			
 		}
 		
@@ -333,7 +333,7 @@ public class SecondPage extends JPanel implements ActionListener {
 	public void if_finish(){
 		
 		if(rp.drink_recipe==null){
-			if(level==1){//level1ÀÇ °æ¿ì ÀÎµ¦½º°¡ 4ÀÌ»ó±îÁö ¸Â°Ô Çß´Ù¸é ¹è¿­À» ÃÊ±âÈ­ÇÏ°í ´Ù½Ã ÁÖ¹®¼­·ê ºÒ·¯¿È
+			if(level==1){//level1ì˜ ê²½ìš° ì¸ë±ìŠ¤ê°€ 4ì´ìƒê¹Œì§€ ë§ê²Œ í–ˆë‹¤ë©´ ë°°ì—´ì„ ì´ˆê¸°í™”í•˜ê³  ë‹¤ì‹œ ì£¼ë¬¸ì„œë£° ë¶ˆëŸ¬ì˜´
 					if(i>4){
 							i=0;
 							clear();
@@ -364,7 +364,7 @@ public class SecondPage extends JPanel implements ActionListener {
 		}	
 				
 		else{
-			if(level==1){//level1ÀÇ °æ¿ì ÀÎµ¦½º°¡ 4ÀÌ»ó±îÁö ¸Â°Ô Çß´Ù¸é ¹è¿­À» ÃÊ±âÈ­ÇÏ°í ´Ù½Ã ÁÖ¹®¼­·ê ºÒ·¯¿È
+			if(level==1){//level1ì˜ ê²½ìš° ì¸ë±ìŠ¤ê°€ 4ì´ìƒê¹Œì§€ ë§ê²Œ í–ˆë‹¤ë©´ ë°°ì—´ì„ ì´ˆê¸°í™”í•˜ê³  ë‹¤ì‹œ ì£¼ë¬¸ì„œë£° ë¶ˆëŸ¬ì˜´
 					if(i>4&&rp.drink_recipe==drink[0]){
 							i=0;
 							clear();
@@ -411,11 +411,8 @@ public class SecondPage extends JPanel implements ActionListener {
 		j--;
 		if (j<0)
 		{
-			JFrame end =new JFrame();
-			JLabel endl=new JLabel("Á¾·á");
-			end.add(endl);
-			end.setSize(300,300);
-			end.setVisible(true);
+			tt.stop();
+			GameOver gameover =new GameOver();
 			;
 		}
 	}
