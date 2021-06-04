@@ -5,7 +5,7 @@ public class MenuTimerTest extends Thread {
 	JPanel timer = new JPanel();
 	JLabel la, la1, la2;
     int min, sec, min_m, sec_m;
-    int n = 0;
+
     public void MenuTimerTest() {
     	
     }
@@ -17,7 +17,7 @@ public class MenuTimerTest extends Thread {
 
         la.setFont(new Font("Gothic", Font.PLAIN, 40));
         la1.setFont(new Font("Gothic", Font.ITALIC, 20));
-        la1.setOpaque(true);// »ö ¼³Á¤
+        la1.setOpaque(true);// ìƒ‰ ì„¤ì •
         Color color = new Color(255,0,0);
         la1.setForeground(color);
         la2.setFont(new Font("Gothic", Font.ITALIC, 20));
@@ -25,15 +25,15 @@ public class MenuTimerTest extends Thread {
         timer.add("Center",la);
         timer.add("North",la1);
         timer.setVisible(true);
-        int n = 1;
+        int n = 0;
         
         while(true){
-            n++; //·çÇÁ µ¹¶§¸¶´Ù 1¾¿ Áõ°¡
+            n++; //ë£¨í”„ ëŒë•Œë§ˆë‹¤ 1ì”© ì¦ê°€
             sec  = n % 60; 
-            la1.setText(String.format(" ¡Ø ÁÖ¹®´ç Á¦ÇÑ½Ã°£: 10ÃÊ"));
+            la1.setText(String.format(" â€» ì£¼ë¬¸ë‹¹ ì œí•œì‹œê°„: 10ì´ˆ"));
             
             if(sec==11) {
-                n=1; //½Ã°£ ÃÊ±âÈ­
+                n=0; //ì‹œê°„ ì´ˆê¸°í™”
                 la.setText(String.format("  %02d:%02d", 0, 0));
                 break;
             }
