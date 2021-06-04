@@ -1,7 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
-import jdk.internal.org.jline.terminal.impl.jna.win.Kernel32.KEY_EVENT_RECORD;
-import jdk.tools.jlink.internal.Jlink;
+//import jdk.internal.org.jline.terminal.impl.jna.win.Kernel32.KEY_EVENT_RECORD;
+//import jdk.tools.jlink.internal.Jlink;
 
 import java.awt.event.*;
 
@@ -63,12 +63,13 @@ class MenuTimer extends JPanel{
                     la1.setText(String.format(" ※ 주문당 제한시간: 10초"));
                 }
                 if(sec==10) {
-                    la1.setText(String.format("※ 주문당 제한시간: 10초"));
+                    la1.setText(String.format(" ※ 주문당 제한시간: 10초"));
                     n=0; //시간 초기화
                     menu++;
                 }
                 if(min_m==1){   //게임시작후 1분이 되면 게임 종료
                     la1.setText(String.format(" ※ 게임종료. "));
+                    la.setText(String.format("  %02d:%02d", 0, 0));
                     break;
                 }
                 

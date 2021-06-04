@@ -4,16 +4,17 @@ import javax.swing.JLabel;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class BeefTimer extends JFrame{ 
+public class BeefTimer { 
     public static int count;
 
     public BeefTimer(){
-        JFrame jf = new JFrame();
-        jf.setTitle("beeftimer");
-        jf.setSize(700, 500);
-        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        JFrame jf = new JFrame();
+//        jf.setTitle("beeftimer");
+//        jf.setSize(700, 500);
+//        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JLabel la= new JLabel();
+        la.setBounds(140,570,200,100);
         count = 0;
         
         Timer cook_timer = new Timer();
@@ -21,30 +22,30 @@ public class BeefTimer extends JFrame{
 
             @Override
             public void run(){
-                    if(count < 2){  //0~2ì´ˆ: íŒ¨í‹° ì•ˆìµìŒ
-                        la.setIcon(new ImageIcon("íŒ¨í‹°1.png"));
-                        jf.getContentPane().add("North", la);
-                        jf.setVisible(true);
+                    if(count < 2){  //0~2ÃÊ: ÆÐÆ¼ ¾ÈÀÍÀ½
+                        la.setIcon(new ImageIcon("ÆÐÆ¼1.png"));
+                        
+                        //jf.getContentPane().add("North", la);
+                        //jf.setVisible(true);
                         count++;
                     }
-                    else if (count < 4){ //2~4ì´ˆ: íŒ¨í‹° ìµìŒ
-                        la.setIcon(new ImageIcon("íŒ¨í‹°2.png"));
-                        jf.getContentPane().add("North", la);
-                        jf.setVisible(true);
+                    else if (count < 4){ //2~4ÃÊ: ÆÐÆ¼ ÀÍÀ½
+                        la.setIcon(new ImageIcon("ÆÐÆ¼2.png"));
+                        //jf.getContentPane().add("North", la);
+                        //jf.setVisible(true);
                         count++;
                     }
                     else{ 
-                        la.setIcon(new ImageIcon("íŒ¨í‹°3.png"));
-                        jf.getContentPane().add("North", la);
-                        jf.setVisible(true);
+                        la.setIcon(new ImageIcon("ÆÐÆ¼3.png"));
+                        //jf.getContentPane().add("North", la);
+                        //jf.setVisible(true);
                         cook_timer.cancel();
                     }
                 }
             };
-            cook_timer.schedule(cook_task, 6000, 1000); //ì¹´ìš´í„° 3ì´ìƒì´ë©´ íƒ€ì´ë¨¸ ì¢…ë£Œ, ë°˜ë³µì£¼ê¸° 1ì´ˆ
+            cook_timer.schedule(cook_task, 6000, 1000); //Ä«¿îÅÍ 3ÀÌ»óÀÌ¸é Å¸ÀÌ¸Ó Á¾·á, ¹Ýº¹ÁÖ±â 1ÃÊ
     }
-    public static void main(String[] args) {        
-        BeefTimer bf = new BeefTimer();
-    }
+//    public static void main(String[] args) {        
+//        BeefTimer bf = new BeefTimer();
+//    }
 }
-

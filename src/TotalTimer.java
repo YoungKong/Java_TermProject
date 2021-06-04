@@ -48,6 +48,7 @@ class TotalTimer extends JPanel{
                 }
                 if(min==1) {
                 	la1.setText(String.format(" ※ 제한시간이 끝났습니다.")); 
+                	la.setText(String.format("  %02d:%02d", 0, 0));
                     break; 
                 }
                 

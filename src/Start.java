@@ -18,13 +18,13 @@ public class Start extends JPanel implements ActionListener {
 	public Start() {
 		
 		setLayout(null);
-		back=new ImageIcon("배경.png").getImage();
+		back=new ImageIcon("諛곌꼍.png").getImage();
 		
-		// 로고
+		// 濡쒓퀬
 		logo = new JLabel(new ImageIcon("logo.png"));
 
-		select_level = new JLabel("난이도를 선택하세요");
-		select_level.setFont(new Font("맑은 고딕", Font.BOLD, 15));
+		select_level = new JLabel("�궃�씠�룄瑜� �꽑�깮�븯�꽭�슂");
+		select_level.setFont(new Font("留묒� 怨좊뵓", Font.BOLD, 15));
 
 		level3 = new JButton("Level 3");
 		level2 = new JButton("Level 2");
@@ -81,11 +81,11 @@ public class Start extends JPanel implements ActionListener {
 			dialog.setVisible(true);
 		}
 		if(e.getSource()==play) {
-			SecondPageMain sf= new SecondPageMain(level);
+			SecondPageMain sf= new SecondPageMain("청파버거");
 
 		}
 		
-		for(int i=0;i<3;i++) {						//난이도 3개 중 하나만 선택되도록 함
+		for(int i=0;i<3;i++) {						//�궃�씠�룄 3媛� 以� �븯�굹留� �꽑�깮�릺�룄濡� �븿
 			if(e.getSource()==levels[i]) {
 				for(int j=0;j<3;j++) {
 					levels[j].setBackground(btn);
