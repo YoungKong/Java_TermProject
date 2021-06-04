@@ -297,7 +297,7 @@ public class SecondPage extends JPanel implements ActionListener {
 
 	}
 
-	public rule(){
+	public void rule(){
 		
 		if(rp.recipe[i]==making[i].getImage()){
 				System.out.println("맞는 재료입니다.");
