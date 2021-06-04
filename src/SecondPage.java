@@ -221,195 +221,45 @@ public class SecondPage extends JPanel implements ActionListener {
 		if(e.getSource()==b_topbun) {
 			making[i]=new ImageIcon("topbun.png");
 			makelabel(i);
-//			if(rp.recipe[i]==making[i].getImage()){//여기 if문을 함수로 만드니까 i++때문에 인덱스1번부터 클릭반영이 안됨.
-//				System.out.println("맞는 재료입니다.");
-//				i++;
-//			}
-//		
-//			else if (rp.recipe[i]!=making[i].getImage())
-//			{
-//				System.out.println("틀렸습니다.");
-//				clear(); //틀릴경우 주문서는 다시 그려지지만 접시의 라벨은 지워지지않음. clear()로 지워져도 다시 그려지지않음 (해결)
-//				i=0;
-//				rp.repaint();//틀릴경우 주문서 다시그림
-//				life();
-//
-//			}
 			rule();
-			if (rule()==true)
-			{
-				i++;
-			}
-			if(rule()==false){
-				i=0;
-				life();
-			}
-//			
 		}
 		if(e.getSource()==b_bottombun) {
 			making[i]=new ImageIcon("bottombun.png");
 			makelabel(i);
-//			if(rp.recipe[i]==making[i].getImage()){
-//				System.out.println("맞는 재료입니다.");
-//				i++;	
-//			}
-//		
-//			else if (rp.recipe[i]!=making[i].getImage())
-//			{
-//				System.out.println("틀렸습니다.");
-//				clear();
-//				i=0;
-//				rp.repaint();
-//				life();
-//
-//			}
 			rule();
-			if (rule()==true)
-			{
-				i++;
-			}
-			if(rule()==false){
-				i=0;
-				life();
-			}
+			
 		}
 		if(e.getSource()==patty_pan) {
 			making[i]=new ImageIcon("patty2.png");
 			makelabel(i);
-//			if(rp.recipe[i]==making[i].getImage()){//여기 if문을 함수로 만드니까 i++때문에 인덱스1번부터 클릭반영이 안됨.
-//				System.out.println("맞는 재료입니다.");
-//				i++;	
-//			}
-//		
-//			else if (rp.recipe[i]!=making[i].getImage())
-//			{
-//				System.out.println("틀렸습니다.");
-//				clear();
-//				i=0;
-//				rp.repaint();
-//				life();
-//
-//			}
 			rule();
-			if (rule()==true)
-			{
-				i++;
-			}
-			if(rule()==false){
-				i=0;
-				life();
-			}
-//			
+					
 		}
 		if(e.getSource()==b_lettuce) {
 			making[i]=new ImageIcon("lettuce.png");
 			makelabel(i);
-//			if(rp.recipe[i]==making[i].getImage()){
-//				System.out.println("맞는 재료입니다.");
-//				i++;	
-//			}
-//		
-//			else if (rp.recipe[i]!=making[i].getImage())
-//			{
-//				System.out.println("틀렸습니다.");
-//				clear();
-//				i=0;
-//				rp.repaint();
-//				life();
-//
-//			}
 			rule();
-			if (rule()==true)
-			{
-				i++;
-			}
-			if(rule()==false){
-				i=0;
-				life();
-			}
+			
 		
 		}
 		if(e.getSource()==b_cheese) {
 			making[i]=new ImageIcon("cheese.png");
 			makelabel(i);
-//			if(rp.recipe[i]==making[i].getImage()){
-//				System.out.println("맞는 재료입니다.");
-//				i++;	
-//			}
-//		
-//			else if (rp.recipe[i]!=making[i].getImage())
-//			{
-//				System.out.println("틀렸습니다.");
-//				clear();
-//				i=0;
-//				rp.repaint(); 
-//				life();
-//
-//			}
 			rule();
-			if (rule()==true)
-			{
-				i++;
-			}
-			if(rule()==false){
-				i=0;
-				life();
-			}
+			
 		
 		}
 		if(e.getSource()==b_onion) {
 			making[i]=new ImageIcon("onion.png");
 			makelabel(i);
-//			if(rp.recipe[i]==making[i].getImage()){
-//				System.out.println("맞는 재료입니다.");
-//				i++;	
-//			}
-//		
-//			else if (rp.recipe[i]!=making[i].getImage())
-//			{
-//				System.out.println("틀렸습니다.");
-//				clear();
-//				i=0;
-//				rp.repaint();
-//				life();
-//
-//			}
 			rule();
-			if (rule()==true)
-			{
-				i++;
-			}
-			else if(rule()==false){
-				i=0;
-				life();
-			}
+			
 		}
 		if(e.getSource()==b_tomato) {
 			making[i]=new ImageIcon("tomato.png");
 			makelabel(i);
-//			if(rp.recipe[i]==making[i].getImage()){
-//				System.out.println("맞는 재료입니다.");
-//				i++;	
-//			}
-//		
-//			else if (rp.recipe[i]!=making[i].getImage())
-//			{
-//				System.out.println("틀렸습니다.");
-//				i=0;
-//				clear();
-//				rp.repaint();
-//				life();
-//
-//			}
 			rule();
-			if (rule()==true)
-			{
-				i++;
-			}
-			if(rule()==false){
-				i=0;
-				life();
-			}
+	
 		
 		}
 		if(e.getSource()==b_coke) {
@@ -451,6 +301,7 @@ public class SecondPage extends JPanel implements ActionListener {
 		boolean correct=false;
 		if(rp.recipe[i]==making[i].getImage()){
 				System.out.println("맞는 재료입니다.");
+				i++;
 				correct=true;
 				if(level==1){//level1의 경우 인덱스가 4이상까지 맞게 했다면 배열을 초기화하고 다시 주문서룰 불러옴
 					if(i>4){
@@ -483,10 +334,10 @@ public class SecondPage extends JPanel implements ActionListener {
 		else if (rp.recipe[i]!=making[i].getImage())
 		{
 				System.out.println("틀렸습니다.");
-				
+				i=0;
 				clear();
 				rp.repaint();
-				//life();
+				life();
 				correct=false;
 		}
 
