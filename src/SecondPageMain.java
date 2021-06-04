@@ -4,7 +4,6 @@ import javax.swing.*;
 public class SecondPageMain extends JFrame{
 	Container content;
 	SecondPage imgP;
-//	public int restart=0;
 	
 	public SecondPageMain(int level){
 		
@@ -15,11 +14,8 @@ public class SecondPageMain extends JFrame{
 		setSize(1100,800);
 		setLocation(200,30);
 		setVisible(true);
-		//end();
-		//System.out.println(restart);
 
 	}
 
-//	reset++;
 	
 }

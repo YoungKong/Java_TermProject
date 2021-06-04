@@ -401,9 +401,10 @@ public class SecondPage extends JPanel implements ActionListener {
 		j--;
 		if (j<0)
 		{
+			//mt.stop();
 			tt.stop();
 			GameOver gameover =new GameOver();
-			;
+	
 		}
 	}
 	public void reTime() {

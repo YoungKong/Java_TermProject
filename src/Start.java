@@ -72,7 +72,7 @@ public class Start extends JPanel implements ActionListener {
 		add(level1);
 		add(play);
 		add(help);
-	
+		
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -81,8 +81,7 @@ public class Start extends JPanel implements ActionListener {
 			dialog.setVisible(true);
 		}
 		if(e.getSource()==play) {
-			SecondPageMain sf= new SecondPageMain(level);
-
+				SecondPageMain sf= new SecondPageMain(level);
 		}
 		
 		for(int i=0;i<3;i++) {						//난이도 3개 중 하나만 선택되도록 함
