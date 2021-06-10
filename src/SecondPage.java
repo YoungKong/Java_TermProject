@@ -1,13 +1,18 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Timer;
 import java.util.TimerTask;
+
 import javax.swing.*;
+import javax.swing.border.*;
 
 public class SecondPage extends JPanel implements ActionListener {
     JButton b_topbun, b_bottombun, b_lettuce, b_tomato, b_cheese, b_patty, b_onion, b_coke, b_sprite;
-    ImageIcon patty_img, patty_ing;
+    ImageIcon patty_img;
+	ImageIcon patty_ing;
     Image back;
     JLabel pan;
     static JButton patty_pan;
@@ -22,6 +27,10 @@ public class SecondPage extends JPanel implements ActionListener {
 	int score=0;
 	int goal;
 	static int k=0;
+	boolean b= false;
+	
+	Label j1;
+	//JPanel sp;
 	
 	ImageIcon [] making=new ImageIcon[7];
 	static JLabel one;
@@ -35,13 +44,24 @@ public class SecondPage extends JPanel implements ActionListener {
 	static JLabel [] life= new JLabel[5]; //life 부분 배열로 만듬
 	Image []drink=new Image[1];
 
+   
     public SecondPage(int level_num){    
     mt = new MenuTimerTest[1000];
   	tt=new TotalTimer(score);
 	level=level_num;				//레벨 추가
-	rp=new Random_ordersheet(level);		//랜덤주문서 매개변수 레벨 추가    
-    	back = new ImageIcon("back.png").getImage();	
-    	setLayout(null);
+	rp=new Random_ordersheet(level);//랜덤주문서 매개변수 레벨 추가   
+	
+    back = new ImageIcon("back.png").getImage();	
+    setLayout(null);
+
+	j1 = new Label();
+	j1.setText("    Money: " + score);
+	j1.setBounds(30, 35, 200, 50);
+	j1.setFont(new Font("맑은 고딕", Font.BOLD, 18));
+	j1.setBackground(Color.WHITE);
+	add(j1);
+
+
 
         //생명 1~5개
         for(int a=0;a<5;a++){ //for문으로 라이프 이미지
@@ -110,6 +130,7 @@ public class SecondPage extends JPanel implements ActionListener {
         tt.start();
         add(rp);
         reTime();
+		
 		
     	add(ordersheet);
     	add(patty_pan);
@@ -191,15 +212,17 @@ public class SecondPage extends JPanel implements ActionListener {
         ordersheet.setBounds(-275, 20, 700, 300);
         patty_img = new ImageIcon("patty1.png");
 		
-		one.setBounds(410,570, 170, 135);//클릭한 재료가 접시위에 쌓임
-		two.setBounds(410,550, 170, 135);
-		three.setBounds(410,530, 170, 135);
-		four.setBounds(410,510, 170, 135);
-		five.setBounds(410,490, 170, 135);
-		six.setBounds(410,470, 170, 135);
-		seven.setBounds(410,450, 170, 135);
-		dish.setBounds(150,410, 600, 500);
-		eight.setBounds(460,410, 170, 135);
+		one.setBounds(410, 570, 170, 135); // 클릭한 재료가 접시위에 쌓임
+		two.setBounds(410, 555, 170, 135);
+		three.setBounds(410, 540, 170, 135);
+		four.setBounds(410, 525, 170, 135);
+		five.setBounds(410, 510, 170, 135);
+		six.setBounds(410, 495, 170, 135);
+		seven.setBounds(410, 480, 170, 135);
+		dish.setBounds(150, 410, 600, 500);
+		eight.setBounds(545, 560, 170, 135);
+
+
     }
     
     public void paint(Graphics g) {
@@ -207,17 +230,18 @@ public class SecondPage extends JPanel implements ActionListener {
     	setOpaque(false);
     	super.paint(g);
     }
-    Timer t = new Timer();
+    
+	Timer t=new Timer();
+
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==b_patty) {
-			 t = new Timer();
-	         patty_finish = false;
-	         patty_ing=new ImageIcon("patty1.png");
-	         patty_pan.setIcon(patty_ing);
-	         
-	         
-
-	         TimerTask task1 = new TimerTask() {
+			t = new Timer();
+			patty_finish=false;
+			patty_ing=new ImageIcon("patty1.png");
+			patty_pan.setIcon(patty_ing);
+			
+			
+			TimerTask task1 = new TimerTask() {
 	            public void run() {
 	            	if(patty_finish == false) {
 	                  patty_ing=new ImageIcon("patty2.png");
@@ -225,9 +249,9 @@ public class SecondPage extends JPanel implements ActionListener {
 	               } 
 	            }
 	         }; t.schedule(task1,2000);
-	      
-	         
-	         TimerTask task2 = new TimerTask() {
+		
+			
+			TimerTask task2 = new TimerTask() {
 	            public void run() {
 	               if(patty_finish == false) {
 	               patty_ing=new ImageIcon("patty3.png");
@@ -235,7 +259,7 @@ public class SecondPage extends JPanel implements ActionListener {
 	                  }
 	               }
 	            }; t.schedule(task2,4000);
-	         }
+			}
 		if(e.getSource()==b_topbun) {
 			making[i]=new ImageIcon("topbun.png");
 			makelabel(i);
@@ -249,14 +273,17 @@ public class SecondPage extends JPanel implements ActionListener {
 			if_finish();
 		}
 		if(e.getSource()==patty_pan) {
-	            making[i]=new ImageIcon(patty_ing.getImage());
-	            patty_finish = true;
-	            patty_pan.setIcon(null);
-	            makelabel(i);
-	            rule();   
-	            if_finish();
-	            t.cancel();
-	         }
+		
+				making[i]=new ImageIcon(patty_ing.getImage());
+				patty_finish = true;
+				patty_pan.setIcon(null);
+				makelabel(i);
+				rule();	
+				if_finish();
+				t.cancel();
+			}
+
+		
 		if(e.getSource()==b_lettuce) {
 			making[i]=new ImageIcon("lettuce.png");
 			makelabel(i);
@@ -294,7 +321,6 @@ public class SecondPage extends JPanel implements ActionListener {
 			if_finish();
 		}
 	}
-	
 	public void makelabel(int i){
 			if (i==0){
 				one.setIcon(making[i]);
@@ -359,7 +385,8 @@ public class SecondPage extends JPanel implements ActionListener {
 							reTime();
 							rp.repaint();
 							score+=2000;
-							System.out.println("score: "+score);
+							j1.setText("    Money: " + score);
+							
 						}
 					}
 			if(level==2){
@@ -370,7 +397,8 @@ public class SecondPage extends JPanel implements ActionListener {
 							reTime();
 							rp.repaint();
 							score+=2000;
-							System.out.println("score: "+score);
+							j1.setText("    Money: " + score);
+							
 						}
 					}
 			if(level==3){
@@ -381,7 +409,8 @@ public class SecondPage extends JPanel implements ActionListener {
 							reTime();
 							rp.repaint();
 							score+=2000;
-							System.out.println("score: "+score);
+							j1.setText("    Money: " + score);
+							
 						}
 					}
 		}	
@@ -394,7 +423,8 @@ public class SecondPage extends JPanel implements ActionListener {
 							reTime();
 							rp.repaint();
 							score+=2000;
-							System.out.println("score: "+score);
+							j1.setText("    Money: " + score);
+							
 						}
 					}
 			if(level==2){
@@ -405,7 +435,8 @@ public class SecondPage extends JPanel implements ActionListener {
 							reTime();
 							rp.repaint();
 							score+=2000;
-							System.out.println("score: "+score);
+							j1.setText("    Money: " + score);
+							
 						}
 					}
 			if(level==3){
@@ -416,12 +447,15 @@ public class SecondPage extends JPanel implements ActionListener {
 							reTime();
 							rp.repaint();
 							score+=2000;
-							System.out.println("score: "+score);
+							j1.setText("    Money: " + score);
+							
 						}
 					}
 		}
+		
 	}
 
+		
 	public static void clear(){
 		one.setIcon(null);
 		two.setIcon(null);
@@ -433,12 +467,14 @@ public class SecondPage extends JPanel implements ActionListener {
 		eight.setIcon(null);
 		patty_pan.setIcon(null);
 	}   
+	
 	public static void life(){
 		life[j].setIcon(null);
 		j--;
 		if (j<0)
 		{
 			//mt.stop();
+			j=0;
 			tt.stop();
 			GameOver gameover =new GameOver();
 		}
@@ -460,6 +496,7 @@ class MenuTimerTest extends Thread{
     int min, sec, min_m, sec_m;
     int n = 0;
     public void MenuTimerTest() {
+    	
     }
 
     public void run(){
@@ -483,8 +520,8 @@ class MenuTimerTest extends Thread{
         while(true){
             n++; //루프 돌때마다 1씩 증가
             sec  = n % 60; 
-            la1.setText(String.format(" ※ 주문당 제한시간: 10초"));
-            if(sec==15) {
+            la1.setText(String.format(" ※ 주문당 제한시간: 12초"));
+            if(sec==12) {
                 n=0; //시간 초기화
                 la.setText(String.format("  %02d:%02d", 0, 0)); 
                 SecondPage.life();
@@ -502,4 +539,3 @@ class MenuTimerTest extends Thread{
         }
     }
 }
-
