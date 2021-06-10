@@ -8,17 +8,21 @@ public class GameOver extends JDialog implements ActionListener{
 	Color btn = new Color(234, 234, 234);
 	JButton restart=new JButton("RESTART");
 	JButton exit=new JButton("EXIT");
+	Color b=new Color(255,250,237);						
 	
 	public GameOver() {
-	
+		
 		setTitle("GAME OVER");	
 		setSize(600, 400);
-		setLocation(500,250);
-		setLayout(null);
+		setLocation(500,250);						
+		
+		JPanel b_panel=new JPanel();
+		b_panel.setLayout(null);
+		b_panel.setBackground(b);									
 		
 		JLabel j1=new JLabel();
 		j1.setIcon(gameover);
-		j1.setBounds(150, 30, 300, 200);
+		j1.setBounds(150, 50, 300, 200);
 	
 		
 		restart.setBackground(btn);
@@ -33,11 +37,11 @@ public class GameOver extends JDialog implements ActionListener{
         
 		restart.addActionListener(this);
 		exit.addActionListener(this);
-
-
-		add(j1);
-		add(restart);
-		add(exit);
+		
+		b_panel.add(j1);
+		b_panel.add(restart);
+		b_panel.add(exit);
+		add(b_panel);
 		setVisible(true);
 	}
 	
@@ -51,6 +55,7 @@ public class GameOver extends JDialog implements ActionListener{
 		}
 		
 	}
+	
 	
 }
 

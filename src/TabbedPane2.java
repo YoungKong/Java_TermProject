@@ -4,9 +4,12 @@ import javax.swing.*;
 
 public class TabbedPane2 extends JPanel{
 	JLabel clear, fail, lt, rt1,rt2, rt3,rt4,rt5,rt6;
-
+	Color b=new Color(255,250,237);								
+	
 	public TabbedPane2() {
 		setLayout(null);
+		setBackground(b);									
+		
 		clear=new JLabel("▷ 클리어 조건");
 		lt=new JLabel("정해진 영업 시간 내에 목숨 5 개를 잃지 않고 목표 매출액을 달성");
 		fail=new JLabel("▷ 중도 실패 규칙");		
