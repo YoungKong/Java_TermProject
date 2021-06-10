@@ -1,17 +1,13 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.Timer;
 import java.util.TimerTask;
-
 import javax.swing.*;
-import javax.swing.border.*;
 
 public class SecondPage extends JPanel implements ActionListener {
     JButton b_topbun, b_bottombun, b_lettuce, b_tomato, b_cheese, b_patty, b_onion, b_coke, b_sprite;
-    ImageIcon patty_img;
+    ImageIcon patty_img, patty_ing;
     Image back;
     JLabel pan;
     static JButton patty_pan;
@@ -39,7 +35,6 @@ public class SecondPage extends JPanel implements ActionListener {
 	static JLabel [] life= new JLabel[5]; //life 부분 배열로 만듬
 	Image []drink=new Image[1];
 
-   
     public SecondPage(int level_num){    
     mt = new MenuTimerTest[1000];
   	tt=new TotalTimer(score);
@@ -205,7 +200,6 @@ public class SecondPage extends JPanel implements ActionListener {
 		seven.setBounds(410,450, 170, 135);
 		dish.setBounds(150,410, 600, 500);
 		eight.setBounds(460,410, 170, 135);
-
     }
     
     public void paint(Graphics g) {
@@ -213,28 +207,35 @@ public class SecondPage extends JPanel implements ActionListener {
     	setOpaque(false);
     	super.paint(g);
     }
-    
+    Timer t = new Timer();
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==b_patty) {
-			patty_pan.setIcon(new ImageIcon("patty1.png"));
-			Timer t = new Timer();
-			
-			
-			TimerTask task1 = new TimerTask() {
-				public void run() {
-						patty_pan.setIcon(new ImageIcon("patty2.png"));
-					} 
-			}; t.schedule(task1,2000);
-		
-			
-			TimerTask task2 = new TimerTask() {
-				public void run() {
-					if(patty_finish == false) {
-					patty_pan.setIcon(new ImageIcon("patty3.png"));
-						}
-					}
-				}; t.schedule(task2,4000);
-			}
+			 t = new Timer();
+	         patty_finish = false;
+	         patty_ing=new ImageIcon("patty1.png");
+	         patty_pan.setIcon(patty_ing);
+	         
+	         
+
+	         TimerTask task1 = new TimerTask() {
+	            public void run() {
+	            	if(patty_finish == false) {
+	                  patty_ing=new ImageIcon("patty2.png");
+	                  patty_pan.setIcon(patty_ing);
+	               } 
+	            }
+	         }; t.schedule(task1,2000);
+	      
+	         
+	         TimerTask task2 = new TimerTask() {
+	            public void run() {
+	               if(patty_finish == false) {
+	               patty_ing=new ImageIcon("patty3.png");
+	               patty_pan.setIcon(patty_ing);
+	                  }
+	               }
+	            }; t.schedule(task2,4000);
+	         }
 		if(e.getSource()==b_topbun) {
 			making[i]=new ImageIcon("topbun.png");
 			makelabel(i);
@@ -248,15 +249,14 @@ public class SecondPage extends JPanel implements ActionListener {
 			if_finish();
 		}
 		if(e.getSource()==patty_pan) {
-			if(patty_pan.getIcon().toString() == "patty2.png") {
-				making[i]=new ImageIcon("patty2.png");
-				patty_finish = true;
-				patty_pan.setIcon(null);
-				makelabel(i);
-				rule();	
-				if_finish();
-			}
-		}
+	            making[i]=new ImageIcon(patty_ing.getImage());
+	            patty_finish = true;
+	            patty_pan.setIcon(null);
+	            makelabel(i);
+	            rule();   
+	            if_finish();
+	            t.cancel();
+	         }
 		if(e.getSource()==b_lettuce) {
 			making[i]=new ImageIcon("lettuce.png");
 			makelabel(i);
@@ -294,6 +294,7 @@ public class SecondPage extends JPanel implements ActionListener {
 			if_finish();
 		}
 	}
+	
 	public void makelabel(int i){
 			if (i==0){
 				one.setIcon(making[i]);
@@ -420,7 +421,7 @@ public class SecondPage extends JPanel implements ActionListener {
 					}
 		}
 	}
-		
+
 	public static void clear(){
 		one.setIcon(null);
 		two.setIcon(null);
@@ -432,7 +433,6 @@ public class SecondPage extends JPanel implements ActionListener {
 		eight.setIcon(null);
 		patty_pan.setIcon(null);
 	}   
-	
 	public static void life(){
 		life[j].setIcon(null);
 		j--;
@@ -460,7 +460,6 @@ class MenuTimerTest extends Thread{
     int min, sec, min_m, sec_m;
     int n = 0;
     public void MenuTimerTest() {
-    	
     }
 
     public void run(){
@@ -485,7 +484,7 @@ class MenuTimerTest extends Thread{
             n++; //루프 돌때마다 1씩 증가
             sec  = n % 60; 
             la1.setText(String.format(" ※ 주문당 제한시간: 10초"));
-            if(sec==10) {
+            if(sec==15) {
                 n=0; //시간 초기화
                 la.setText(String.format("  %02d:%02d", 0, 0)); 
                 SecondPage.life();
