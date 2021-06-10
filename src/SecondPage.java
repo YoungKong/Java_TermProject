@@ -10,8 +10,7 @@ public class SecondPage extends JPanel implements ActionListener {
     JButton b_topbun, b_bottombun, b_lettuce, b_tomato, b_cheese, b_patty, b_onion, b_coke, b_sprite;
     ImageIcon patty_img;
     Image back;
-    JLabel pan;
-    JButton patty_pan;
+    JLabel pan,patty_pan;
     TotalTimer tt;
     MenuTimerTest[] mt;
     Random_ordersheet rp;
@@ -20,19 +19,21 @@ public class SecondPage extends JPanel implements ActionListener {
 	int i=0;
 	int j=4;
 	int score=0;
-	int goal;
-	int k=0;
+	int totalscore=0;
+	public int goal;
+	int k=0;	
 	
 	ImageIcon [] making=new ImageIcon[7];
 	JLabel one,two,three,four,five,six,seven,eight;
 	JLabel [] life= new JLabel[5]; //life 부분 배열로 만듬
 	Image []drink=new Image[1];
 
-   
+	
     public SecondPage(int level_num){    
+    level=level_num;				//레벨 추가							//
     mt = new MenuTimerTest[1000];
-  	tt=new TotalTimer(score);
-	level=level_num;				//레벨 추가
+  	tt=new TotalTimer(level);									//
+	
 	rp=new Random_ordersheet(level);		//랜덤주문서 매개변수 레벨 추가    
     	back = new ImageIcon("back.png").getImage();	
     	setLayout(null);
@@ -84,10 +85,9 @@ public class SecondPage extends JPanel implements ActionListener {
         b_coke = new JButton(new ImageIcon("coke.png"));
         b_sprite = new JButton(new ImageIcon("sprite.png"));
         pan = new JLabel(new ImageIcon("pan.png"));
-	patty_pan = new JButton();
 		
 		b_patty.addActionListener((ActionListener) this);
-	        patty_pan.addActionListener((ActionListener) this);
+
 		b_topbun.addActionListener((ActionListener) this);
 		b_bottombun.addActionListener((ActionListener) this);
 		b_lettuce.addActionListener((ActionListener) this);
@@ -97,14 +97,13 @@ public class SecondPage extends JPanel implements ActionListener {
 		b_coke.addActionListener((ActionListener) this);
 		b_sprite.addActionListener((ActionListener) this);
 
-        //patty_pan = new JLabel();
-    	//patty_pan.setBounds(140,570,200,100);
+        patty_pan = new JLabel();
+    	patty_pan.setBounds(140,570,200,100);
  
         add(tt.totaltimer);
         tt.start();
         add(rp);
         reTime();
-	add(patty_pan);
 		
     	add(ordersheet);
     	add(patty_pan);
@@ -172,11 +171,6 @@ public class SecondPage extends JPanel implements ActionListener {
         
 		pan.setBounds(30, 450, 320, 270);
 		pan.setOpaque(false);
-	    
-	    	patty_pan.setBounds(140,570,200,100);
-		patty_pan.setOpaque(false);
-		patty_pan.setContentAreaFilled(false);
-		patty_pan.setBorderPainted(false); 
 
         life[0].setBounds(700, 370, 60, 50);
         life[1].setBounds(764, 370, 60, 50);
@@ -209,45 +203,7 @@ public class SecondPage extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
     	
 		if(e.getSource()==b_patty) { //패티가 후라이팬에 들어가면 패티 타이머 가동하기(미완), 팬에 있는 패티를 눌러야 접시에 쌓임(미완)
-			BeefTimer bt = new BeefTimer();
-			bt.start();
-			while (bt.count < 4){ 
-				if (bt.count == 0 || bt.count == 1){
-					patty_pan.setIcon(new ImageIcon("patty1.png"));
-					System.out.println(bt.count);
-					try{
-						Thread.sleep(1000);
-					}
-					catch(Exception ex){
-						return;
-					}
-				}
-				else if( bt.count ==2 || bt.count ==3){
-					patty_pan.setOpaque(false);
-					patty_pan.setIcon(new ImageIcon("patty2.png"));
-					System.out.println(bt.count);
-					try{
-						Thread.sleep(1000);
-					}
-					catch(Exception ex){
-						return;
-					}
-					//patty_pan.repaint();
-					//patty_pan.setIcon(null);
-				}
-				else if (bt.count==4) {
-					//patty_pan.setOpaque(false);
-					patty_pan.setIcon(new ImageIcon("patty3.png"));
-					System.out.println(bt.count);
-					try{
-						Thread.sleep(1000);
-					}
-					catch(Exception ex){
-						return;
-					}
-					//patty_pan.repaint();
-					//patty_pan.setIcon(null);
-				}
+			patty_pan.setIcon(patty_img);
 		}
 		if(e.getSource()==b_topbun) {
 			making[i]=new ImageIcon("topbun.png");
@@ -369,6 +325,7 @@ public class SecondPage extends JPanel implements ActionListener {
 			if(level==1){//level1의 경우 인덱스가 4이상까지 맞게 했다면 배열을 초기화하고 다시 주문서룰 불러옴
 					if(i>4){
 							i=0;
+							drink[0]=null;
 							clear();
 							reTime();
 							rp.repaint();
@@ -379,6 +336,7 @@ public class SecondPage extends JPanel implements ActionListener {
 			if(level==2){
 						if(i>5){
 							i=0;
+							drink[0]=null;
 							clear();
 							reTime();
 							rp.repaint();
@@ -389,6 +347,7 @@ public class SecondPage extends JPanel implements ActionListener {
 			if(level==3){
 						if(i>6){
 							i=0;
+							drink[0]=null;
 							clear();
 							reTime();
 							rp.repaint();
@@ -401,6 +360,7 @@ public class SecondPage extends JPanel implements ActionListener {
 			if(level==1){//level1의 경우 인덱스가 4이상까지 맞게 했다면 배열을 초기화하고 다시 주문서룰 불러옴
 					if(i>4&&rp.drink_recipe==drink[0]){
 							i=0;
+							drink[0]=null;
 							clear();
 							reTime();
 							rp.repaint();
@@ -411,6 +371,7 @@ public class SecondPage extends JPanel implements ActionListener {
 			if(level==2){
 						if(i>5&&rp.drink_recipe==drink[0]){
 							i=0;
+							drink[0]=null;
 							clear();
 							reTime();
 							rp.repaint();
@@ -421,6 +382,7 @@ public class SecondPage extends JPanel implements ActionListener {
 			if(level==3){
 						if(i>6&&rp.drink_recipe==drink[0]){
 							i=0;
+							drink[0]=null;
 							clear();
 							reTime();
 							rp.repaint();
@@ -429,6 +391,7 @@ public class SecondPage extends JPanel implements ActionListener {
 						}
 					}
 		}
+		
 	}
 		
 	public void clear(){
@@ -449,17 +412,24 @@ public class SecondPage extends JPanel implements ActionListener {
 		{
 			//mt.stop();
 			tt.stop();
-			GameOver gameover =new GameOver();
+			GameOver gameover =new GameOver();				
 	
 		}
 	}
+	
 	public void reTime() {
-		mt[k] = new MenuTimerTest();
-		if (k!=0)
+		mt[k] = new MenuTimerTest();	
+
+		if (k!=0) {
 			mt[k-1].stop();
+		}
+			
+	
 		add(mt[k].timer);
 		mt[k].timer.setBounds(700, 450, 300, 135);
 		mt[k].timer.repaint();
-		mt[k++].start();
+		mt[k].start();												//원래 k++
+		k++;
+	
 	}
 }
