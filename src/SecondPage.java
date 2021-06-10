@@ -10,7 +10,8 @@ public class SecondPage extends JPanel implements ActionListener {
     JButton b_topbun, b_bottombun, b_lettuce, b_tomato, b_cheese, b_patty, b_onion, b_coke, b_sprite;
     ImageIcon patty_img;
     Image back;
-    JLabel pan,patty_pan;
+    JLabel pan;
+    JButton patty_pan;
     TotalTimer tt;
     MenuTimerTest[] mt;
     Random_ordersheet rp;
@@ -83,9 +84,10 @@ public class SecondPage extends JPanel implements ActionListener {
         b_coke = new JButton(new ImageIcon("coke.png"));
         b_sprite = new JButton(new ImageIcon("sprite.png"));
         pan = new JLabel(new ImageIcon("pan.png"));
+	patty_pan = new JButton();
 		
 		b_patty.addActionListener((ActionListener) this);
-
+	        patty_pan.addActionListener((ActionListener) this);
 		b_topbun.addActionListener((ActionListener) this);
 		b_bottombun.addActionListener((ActionListener) this);
 		b_lettuce.addActionListener((ActionListener) this);
@@ -95,13 +97,14 @@ public class SecondPage extends JPanel implements ActionListener {
 		b_coke.addActionListener((ActionListener) this);
 		b_sprite.addActionListener((ActionListener) this);
 
-        patty_pan = new JLabel();
-    	patty_pan.setBounds(140,570,200,100);
+        //patty_pan = new JLabel();
+    	//patty_pan.setBounds(140,570,200,100);
  
         add(tt.totaltimer);
         tt.start();
         add(rp);
         reTime();
+	add(patty_pan);
 		
     	add(ordersheet);
     	add(patty_pan);
@@ -169,6 +172,11 @@ public class SecondPage extends JPanel implements ActionListener {
         
 		pan.setBounds(30, 450, 320, 270);
 		pan.setOpaque(false);
+	    
+	    	patty_pan.setBounds(140,570,200,100);
+		patty_pan.setOpaque(false);
+		patty_pan.setContentAreaFilled(false);
+		patty_pan.setBorderPainted(false); 
 
         life[0].setBounds(700, 370, 60, 50);
         life[1].setBounds(764, 370, 60, 50);
@@ -201,7 +209,45 @@ public class SecondPage extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
     	
 		if(e.getSource()==b_patty) { //패티가 후라이팬에 들어가면 패티 타이머 가동하기(미완), 팬에 있는 패티를 눌러야 접시에 쌓임(미완)
-			patty_pan.setIcon(patty_img);
+			BeefTimer bt = new BeefTimer();
+			bt.start();
+			while (bt.count < 4){ 
+				if (bt.count == 0 || bt.count == 1){
+					patty_pan.setIcon(new ImageIcon("patty1.png"));
+					System.out.println(bt.count);
+					try{
+						Thread.sleep(1000);
+					}
+					catch(Exception ex){
+						return;
+					}
+				}
+				else if( bt.count ==2 || bt.count ==3){
+					patty_pan.setOpaque(false);
+					patty_pan.setIcon(new ImageIcon("patty2.png"));
+					System.out.println(bt.count);
+					try{
+						Thread.sleep(1000);
+					}
+					catch(Exception ex){
+						return;
+					}
+					//patty_pan.repaint();
+					//patty_pan.setIcon(null);
+				}
+				else if (bt.count==4) {
+					//patty_pan.setOpaque(false);
+					patty_pan.setIcon(new ImageIcon("patty3.png"));
+					System.out.println(bt.count);
+					try{
+						Thread.sleep(1000);
+					}
+					catch(Exception ex){
+						return;
+					}
+					//patty_pan.repaint();
+					//patty_pan.setIcon(null);
+				}
 		}
 		if(e.getSource()==b_topbun) {
 			making[i]=new ImageIcon("topbun.png");
