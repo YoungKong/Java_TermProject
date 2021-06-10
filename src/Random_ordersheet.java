@@ -46,12 +46,14 @@ public class Random_ordersheet extends JPanel{
 		drink_recipe=drink[random_drink];
 	
 		if(level==3) {
-			g.drawImage(random1,70,90,this);
-			g.drawImage(random2,70,130,this);
-			g.drawImage(random3,70,170,this);
-			g.drawImage(random4,70,210,this);
-			g.drawImage(random5,70,250,this);
-			g.drawImage(bottombun,70,290,this);
+			
+			g.drawImage(bottombun,50,140,this);
+			g.drawImage(random1,50,170,this);
+			g.drawImage(random2,50,155,this);
+			g.drawImage(random3,50,140,this);
+			g.drawImage(random4,50,125,this);
+			g.drawImage(random5,50,110,this);
+			g.drawImage(topbun,50,50,this);
 			
 			recipe[0]=bottombun;
 			recipe[1]=random1;
@@ -62,11 +64,13 @@ public class Random_ordersheet extends JPanel{
 			recipe[6]=topbun;
 		}
 		else if(level==2) {
-			g.drawImage(random1,70,90,this);
-			g.drawImage(random2,70,130,this);
-			g.drawImage(random3,70,170,this);
-			g.drawImage(random4,70,210,this);
-			g.drawImage(bottombun,70,250,this);
+			g.drawImage(bottombun,50,140,this);
+			g.drawImage(random1,50,170,this);
+			g.drawImage(random2,50,155,this);
+			g.drawImage(random3,50,140,this);
+			g.drawImage(random4,50,125,this);
+			g.drawImage(topbun,50,65,this);
+			
 			recipe[0]=bottombun;
 			recipe[1]=random1;
 			recipe[2]=random2;
@@ -75,11 +79,11 @@ public class Random_ordersheet extends JPanel{
 			recipe[5]=topbun;
 		}
 		else {
-			g.drawImage(bottombun,70,140,this);
-			g.drawImage(random1,70,170,this);
-			g.drawImage(random2,70,155,this);
-			g.drawImage(random3,70,140,this);
-			
+			g.drawImage(bottombun,50,140,this);
+			g.drawImage(random1,50,170,this);
+			g.drawImage(random2,50,155,this);
+			g.drawImage(random3,50,140,this);
+			g.drawImage(topbun,50,80,this);
 		
 			recipe[0]=bottombun;
 			recipe[1]=random1;
@@ -91,7 +95,7 @@ public class Random_ordersheet extends JPanel{
 			}
 		}
 
-		g.drawImage(topbun,70,80,this);
+
 		setOpaque(false);
 		super.paint(g);
 	}
