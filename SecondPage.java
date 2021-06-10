@@ -19,19 +19,22 @@ public class SecondPage extends JPanel implements ActionListener {
 	int i=0;
 	int j=4;
 	int score=0;
-	int goal;
-	int k=0;
+	int totalscore=0;
+	public int goal;
+	int k=0;	
 	
 	ImageIcon [] making=new ImageIcon[7];
 	JLabel one,two,three,four,five,six,seven,eight;
 	JLabel [] life= new JLabel[5]; //life 부분 배열로 만듬
 	Image []drink=new Image[1];
+	//JLabel ls;
 
-   
+	
     public SecondPage(int level_num){    
+    level=level_num;				//레벨 추가							//
     mt = new MenuTimerTest[1000];
-  	tt=new TotalTimer(score);
-	level=level_num;				//레벨 추가
+  	tt=new TotalTimer(level);									//
+	
 	rp=new Random_ordersheet(level);		//랜덤주문서 매개변수 레벨 추가    
     	back = new ImageIcon("back.png").getImage();	
     	setLayout(null);
@@ -59,6 +62,7 @@ public class SecondPage extends JPanel implements ActionListener {
        
         //접시 이미지
         JLabel dish = new JLabel();
+		//ls=new JLabel("현재 번 금액: "+score);
         dish.setIcon(new ImageIcon("dish.png"));
         JLabel ordersheet = new JLabel();
         ordersheet.setIcon(new ImageIcon("order.png"));
@@ -103,7 +107,8 @@ public class SecondPage extends JPanel implements ActionListener {
         add(rp);
         reTime();
 		
-    	add(ordersheet);
+    	//add(ls);
+		add(ordersheet);
     	add(patty_pan);
         add(b_topbun);
         add(b_bottombun);
@@ -188,6 +193,7 @@ public class SecondPage extends JPanel implements ActionListener {
 		seven.setBounds(410,450, 170, 135);
 		dish.setBounds(150,410, 600, 500);
 		eight.setBounds(460,410, 170, 135);
+		//ls.setBounds(30,30,200,100);
 
     }
     
@@ -328,6 +334,7 @@ public class SecondPage extends JPanel implements ActionListener {
 							reTime();
 							rp.repaint();
 							score+=2000;
+							//ls.setText("현재 번 금액: "+score);
 							System.out.println("score: "+score);
 						}
 					}
@@ -339,6 +346,7 @@ public class SecondPage extends JPanel implements ActionListener {
 							reTime();
 							rp.repaint();
 							score+=2000;
+							//ls.setText("현재 번 금액: "+score);
 							System.out.println("score: "+score);
 						}
 					}
@@ -350,6 +358,7 @@ public class SecondPage extends JPanel implements ActionListener {
 							reTime();
 							rp.repaint();
 							score+=2000;
+							//ls.setText("현재 번 금액: "+score);
 							System.out.println("score: "+score);
 						}
 					}
@@ -363,6 +372,7 @@ public class SecondPage extends JPanel implements ActionListener {
 							reTime();
 							rp.repaint();
 							score+=2000;
+							//ls.setText("현재 번 금액: "+score);
 							System.out.println("score: "+score);
 						}
 					}
@@ -374,6 +384,7 @@ public class SecondPage extends JPanel implements ActionListener {
 							reTime();
 							rp.repaint();
 							score+=2000;
+							//ls.setText("현재 번 금액: "+score);
 							System.out.println("score: "+score);
 						}
 					}
@@ -385,10 +396,12 @@ public class SecondPage extends JPanel implements ActionListener {
 							reTime();
 							rp.repaint();
 							score+=2000;
+							//ls.setText("현재 번 금액: "+score);
 							System.out.println("score: "+score);
 						}
 					}
 		}
+		
 	}
 		
 	public void clear(){
@@ -409,18 +422,24 @@ public class SecondPage extends JPanel implements ActionListener {
 		{
 			//mt.stop();
 			tt.stop();
-			GameOver gameover =new GameOver();
-			
+			GameOver gameover =new GameOver();				
 	
 		}
 	}
+	
 	public void reTime() {
-		mt[k] = new MenuTimerTest();
-		if (k!=0)
+		mt[k] = new MenuTimerTest();	
+
+		if (k!=0) {
 			mt[k-1].stop();
+		}
+			
+	
 		add(mt[k].timer);
 		mt[k].timer.setBounds(700, 450, 300, 135);
 		mt[k].timer.repaint();
-		mt[k++].start();
+		mt[k].start();												//원래 k++
+		k++;
+	
 	}
 }
