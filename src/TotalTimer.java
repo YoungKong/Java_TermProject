@@ -6,11 +6,12 @@ class TotalTimer extends Thread {
 	JLabel la;
 	JLabel la1;
 	int min, sec;
-	int score;
-
-	public TotalTimer(int num) {
-		score=num;
+	int level;										//
+	
+	public TotalTimer() {				//
+		//level=level_num;									//
 	}
+	
 
 	public void run() {
 		totaltimer.setLayout(new BorderLayout(10, 10));
@@ -29,7 +30,8 @@ class TotalTimer extends Thread {
 		totaltimer.setVisible(true);
 		int n = 0;
 
-
+		
+		
 		while (true) {
 			n++;
 			sec = n % 60;
@@ -42,7 +44,9 @@ class TotalTimer extends Thread {
 				n=0;
 				la1.setText(String.format(" ※ 제한시간이 끝났습니다."));
 				la.setText(String.format("  %02d:%02d", 0, 0));
-				TimeOver t = new TimeOver(score);
+				
+				//System.out.println(sp.rtscore());
+				TimeOver t = new TimeOver();						
 				break;
 			}
 
